@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng chuyển đổi tiền tệ</title>
+</head>
+<body>
+<form name="currency">
+    <table>
+        <tr>
+            <th><b>Amount</b></th>
+            <th><b>From Currency</b></th>
+            <th><b>To Currency</b></th>
+
+        </tr>
+        <tr>
+            <td> <input type="number" id="text"> </td>
+            <td>
+                <select style="width: 100px" id="fromcur">
+                    <option >VietNam</option>
+                    <option >USD</option>
+                </select>
+            </td>
+            <td>
+                <select style="width: 100px" id="tocur">
+                <option >USD</option>
+                <option >VietNam</option>
+                </select>
+            </td>
+            <td><input type="button" value="Convert" onclick="convert()"></td>
+        </tr>
+    </table>
+</form>
+<p id="result"></p>
+<script src="BT_ungdungdoitien.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyen tap cau truc dieu kien 1</title>
+</head>
+<style>
+    div{
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+    div:hover{
+        color: lightpink;
+        transition: all .2s ease-in-out;
+    }
+</style>
+<body>
+<h3>Chọn bài tập muốn xem</h3>
+<div onclick="Bai1()">Bài 1: Nhập vào 2 số a và b và kiểm tra a có chia hết cho b hay không ?</div>
+<div onclick="Bai2()">Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10.</div>
+<div onclick="Bai3()">Bài 3: Nhập một số nguyên bất kỳ và in kết quả ra màn hình để nói cho người dùng biết số đó là lớn hay nhỏ hơn 0</div>
+<div onclick="Bai4()">Bài 4: Nhập 3 số nguyên và tìm giá trị lớn nhất của ba số nguyên đó</div>
+<div onclick="Bai5()">Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ</div>
+<div onclick="Bai6()">Bài 6: Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng</div>
+<div onclick="Bai7()">Bài 7: Tính cước điện thoại cho một hộ gia đình với các thông số đã cho</div>
+<script>
+
+    function Bai1() {
+        let a = parseInt(prompt("Nhập số a"));
+        let b = parseInt(prompt("Nhập số b"));
+        if(a % b == 0){
+            alert('a chia hết cho b')
+        }else{
+            alert('a không chia hết cho b');
+        }
+    }
+    function Bai2() {
+        let age = parseInt(prompt("Nhập số tuổi "));
+        if(age >18 || age <16){
+            alert('Số tuổi của bạn không đủ điều kiện học lớp 10');
+        }else{
+            alert('Số tuổi của bạn đủ điều kiện để học lớp 10');
+        }
+    }
+    function Bai3() {
+        let a = parseInt(prompt("Nhập vào số nguyên"));
+        switch (true) {
+            case (a>0):
+                alert('Số bạn vừa nhập lớn hơn 0');
+                break;
+            case (a<0):
+                alert('Số bạn vừa nhập nhỏ hơn 0');
+                break;
+            case (a == 0):
+                alert('Số bạn vừa nhập bằng 0');
+                break;
+            default:
+                alert('Error nhập lại số');
+        }
+    }
+    function Bai4() {
+        let a = parseInt(prompt('Nhập số a'));
+        let b = parseInt(prompt('Nhập số b'));
+        let c = parseInt(prompt('Nhập số c'));
+        let max = a;
+        if(max < b){
+            if(max < c){
+                max = c;
+            }else{
+                max = b;
+            }
+        }else{ max = a;
+        }
+
+        alert('Số lớn nhất là: ' + max);
+    }
+    function Bai5() {
+        let quizTest = parseFloat(prompt('Nhập điểm kiểm tra 15 phút'));
+        let midtermTest = parseFloat(prompt('Nhập điểm kiểm tra giữa kì'));
+        let finalTest = parseFloat(prompt('Nhập điểm kiểm tra cuối kì'));
+        let rank = (quizTest + midtermTest + finalTest)/3;
+        if(rank > 9){
+            alert('Học lực giỏi');
+        }else if(rank > 7){
+            alert('Học lực khá');
+        }else if(rank >5 ){
+            alert('Học lực trung bình');
+        }else{
+            alert('Học lực yếu');
+        }
+    }
+    function Bai6() {
+        let money = parseInt(prompt('NHẬP DOANH SỐ BÁN HÀNG:\n' +
+        'Nếu doanh số > 5000$ thì hoa hồng là 20%\n'+
+        '        doanh số >3000$ thì hoa hồng là 15%\n' +
+        '        doanh số >1000$ thì hoa hồng là 10%\n'+
+        '        doanh số <1000$ thì không có tiền hoa hồng\n'));
+        let result;
+        if(money > 5000){
+            result = money * 20/100;
+        }else if(money > 3000){
+            result = money * 15/100;
+        }else if(money > 1000){
+            result = money * 10/100;
+        }else{
+            result = 0;
+        }
+        alert('Số tiền hoa hồng nhận được dựa theo doanh số bán hàng là: ' + result + '$');
+
+    }
+    function Bai7() {
+        let num = parseInt(prompt('Nhập số tổng số phút hộ gia đình dùng điện thoại tháng này\n' +
+            'Cước điện thoại 2000 VNĐ/1 phút \n' +
+            'Nếu số phút >60 phút giảm 10% tổng tiền cước\n' +
+            'Nếu số phút >30 phút giảm 5% tổng tiền cước \n' +
+            'dưới 30 phút thì không giảm tiền'));
+        let money;
+        if(num >60){
+            money = num * 2000 * (1-10/100);
+        }else if(num >30){
+            money = num * 2000 * (1-5/100);
+        }else{
+            money = num * 2000;
+        }
+        alert('Số tiền cước điện thoại phải trả là: ' + money + ' VNĐ')
+    }
+</script>
+</body>
+</html>

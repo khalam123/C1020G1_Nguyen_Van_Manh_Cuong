@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>20 So nguyen to dau tien</title>
+</head>
+<body>
+<script>
+    let number = prompt("Nhập số lượng số nguyên tố cần in ");
+    let count = 0;
+    let i,j;
+
+    for (i=2; count < number; i++) {
+        // isPrime = true;
+        for (j=2; j < i; j++) {
+            if (i % j == 0) {
+                // isPrime = false;
+                break;
+            }
+        }
+        if (i == j) {
+            count++;
+            document.write(i + ' ');
+        }
+    }
+
+
+</script>
+</body>
+</html>

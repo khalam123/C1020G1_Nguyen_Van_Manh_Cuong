@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample rental service registration form</title>
+</head>
+
+
+<body>
+<form id="form">
+    <fieldset style="width: 30%;background-color: lavenderblush;text-align: center">
+        <legend><h1>Service Registration</h1></legend>
+        <label><b/>Họ và Tên</label>
+        <input style="margin-left: 111px" type="text" name="userName" ><br><br>
+        <label>CMND</label>
+        <input style="margin-left: 132px" type="number" name="myid" ><br><br>
+        <label>Ngày sinh</label>
+        <input style="margin-left: 113px" type="date" name="dob" ><br><br>
+        <lable>Email</lable>
+        <input style="margin-left: 140px" type="text" name="email" ><br><br>
+        <lable>Địa chỉ</lable>
+        <textarea style="margin-left: 130px;width: 150px" name="address" ></textarea><br><br>
+        <lable style="margin-right: 30px">Loại Khácnh Hàng</lable>
+        <select style="margin-left: 20px;width:155px" name="customer">
+            <option> - Loại Customer - </option>
+            <option>Diamond</option>
+            <option>Platinum</option>
+            <option>Gold</option>
+            <option>Silver</option>
+            <option>Member</option>
+        </select><br><br>
+        <label>Giảm giá</label>
+        <input style="margin-left: 117px" type="number" name="discount" ><br><br>
+        <label >Số lượng người đi kèm</label>
+        <input style="margin-left: 20px" type="number" name="amount" ><br><br>
+        <label>Số ngày thuê</label>
+        <input style="margin-left: 90px" type="number" name="rentDays" ><br><br>
+        <label>Loại dịch vụ </label>
+        <select style="margin-left: 95px; width: 155px" name="service">
+            <option>- Loại dịch vụ -</option>
+            <option value="500">Villa: 500$/1 ngày</option>
+            <option value="300">House: 300$/1 ngày</option>
+            <option value="100">Room: 100$/1 ngày</option>
+        </select><br><br>
+        <label>Loại phòng </label>
+        <select style="margin-left: 100px;width: 155px" name="room">
+            <option>- Loại phòng thuê -</option>
+            <option>Vip</option>
+            <option>Business</option>
+            <option>Normal</option>
+        </select><br><br>
+        <input style="width:100px"type="button" name="submit" value="Xác Nhận" onclick="Submit()">
+    </fieldset>
+</form>
+<script>
+    let form = document.getElementById('form');
+    let service = form.service;
+    let result;
+    let day = form.rentDays;
+    let discount = form.discount;
+    function Submit() {
+        document.write("Họ và tên: " + form.userName.value +"<br>" );
+        document.write("Số chứng minh thư: " + form.myid.value + "<br>");
+        document.write("Ngày sinh: " + form.dob.value + "<br>");
+        document.write("Email: " + form.email.value + "<br>");
+        document.write("Địa chỉ: " + form.address.value + "<br>");
+        document.write("Khách hàng: " + form.customer.value + "<br>");
+        document.write("Giảm giá: " + form.discount.value + "%" + "<br>");
+        document.write("Số lượng người đi kèm: " + form.amount.value + "<br>");
+        document.write("Ngày thuê: " + form.rentDays.value + "<br>");
+        document.write("Loại dịch vụ: " + form.service.value + "$/1 ngày" +"<br>");
+        document.write("Loại phòng: " + form.room.value + "<br>");
+        result = service.value*1 * day.value*1 * (1 - discount.value*1/100);
+        document.write("Tổng số tiền phải trả là = " + result + "$");
+    }
+
+</script>
+</body>
+
+</html>

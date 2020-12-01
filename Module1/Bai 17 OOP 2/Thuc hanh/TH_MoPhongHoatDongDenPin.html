@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng mô phỏng hoạt động của đèn pin</title>
+</head>
+<body>
+<script>
+    class Pin{
+        constructor(energy) {
+            this.energy = energy;
+        }
+        setEnergy(energy){
+           this.energy = energy;
+        }
+        getEnergy(){
+            return this.energy;
+        }
+        decreaseEnergy(){
+            if(this.energy>0){
+                this.energy--;
+            }
+        }
+
+    }
+    class FlashLamp{
+        constructor() {
+            this.pin = Pin;
+            this.status = false;
+        }
+        setPin(Pin){
+            this.pin = Pin;
+        }
+        getPinInfo(){
+            return this.pin;
+        }
+        light(){
+            if (this.status){
+                alert('Lighting');
+                this.pin.decreaseEnergy();
+            }else{
+                alert('Not Lighting');
+            }
+
+        }
+        turnOn(){
+            this.status = true;
+        }
+        turnOff(){
+            this.status = false;
+        }
+    }
+    let pin = new Pin();
+    pin.setEnergy(10);
+    let flashlamp = new FlashLamp();
+    flashlamp.setPin(pin);
+
+    flashlamp.light();
+    document.writeln("Pin info: " + flashlamp.getPinInfo().getEnergy() + "<br/>");
+
+    document.write("Turn on<br/>")
+    flashlamp.turnOn();
+    flashlamp.light();
+    document.write("Pin info:" + flashlamp.getPinInfo().getEnergy() + "<br/>");
+
+    document.write("Turn off<br/>")
+    flashlamp.turnOff();
+    flashlamp.light();
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>May tinh don gian</title>
+</head>
+<style>
+    form {
+        background: darkgray;
+        margin: 0 auto;
+        width: 300px;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    form * {
+        box-sizing: border-box;
+    }
+    form table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    form table tr, form table td {
+        border: 1px solid lightblue;
+    }
+    form table tr:first-child input {
+        height: 50px;
+        padding: 0 10px;
+        font-weight: 700;
+    }
+    form table tr:not(:first-child) td {
+        height: 70px;
+    }
+    form table tr:not(:first-child) td input {
+        height: 100%;
+    }
+    form table input {
+        width: 100%;
+        display: block;
+        border: 0;
+        font-size: 16px;
+    }
+    form table input:focus {
+        outline: none;
+    }
+    form table input:hover {
+        background: lightpink;
+        transition: all .2s ease-in-out;
+    }
+
+</style>
+<body>
+<form name="calculator">
+    <table>
+        <tr>
+            <td colspan="4">
+                <input style="text-align: right; width: 100%; height: 50px" type="text" name="dislay" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" name="one" value="1" onclick="add(1)"></td>
+            <td><input type="button" name="two" value="2" onclick="add(2)"></td>
+            <td><input type="button" name="three" value="3" onclick="add(3)"></td>
+            <td><input type="button" name="plus" value="+" onclick="add('+')"></td>
+
+        </tr>
+        <tr>
+            <td><input type="button" name="four" value="4" onclick="add(4)"></td>
+            <td><input type="button" name="five" value="5" onclick="add(5)"></td>
+            <td><input type="button" name="six" value="6" onclick="add(6)"></td>
+            <td><input type="button" name="minus" value="-" onclick="add('-')"></td>
+
+        </tr>
+        <tr>
+            <td><input type="button" name="seven" value="7" onclick="add(7)"></td>
+            <td><input type="button" name="eight" value="8" onclick="add(8)"></td>
+            <td><input type="button" name="nine" value="9" onclick="add(9)"></td>
+            <td><input type="button" name="multi" value="x" onclick="add('*')"></td>
+
+        </tr>
+        <tr>
+            <td><input type="reset" id="clear" name="clear" value="C"></td>
+            <td><input type="button" name="zero" value="0" onclick="add('0')"></td>
+            <td><input type="button" name="doit" value="=" onclick="evaluator()"></td>
+            <td><input type="button" name="div" value="/" onclick="add('/')"></td>
+        </tr>
+
+    </table>
+</form>
+<script>
+    let flag = false;
+    l
+    function add(num) {
+        if( flag && num !='+' && num != '-' && num != '*' && num != '/' ){
+            document.calculator.dislay.value = '';
+        }
+        // if(num =='+' || num == '-' || num == '*' || num == '/' ){
+        //     if(calculator.dislay.charAt(calculator.dislay.length - 1) == "+" || calculator.dislay.charAt(calculator.dislay.length - 1) == "-" || calculator.dislay.charAt(calculator.dislay.length - 1) == "*" || calculator.dislay.charAt(calculator.dislay.length - 1) == "/" ){
+        //
+        //     }else {
+        //         document.calculator.dislay.value += num;
+        //         flag = false;
+        //     }
+        // }else{
+            document.calculator.dislay.value += num;
+            flag = false;
+
+        //}
+    }
+
+    function evaluator(){
+        let evalo = eval(document.calculator.dislay.value);
+        document.calculator.dislay.value = evalo;
+        flag = true;
+    }
+
+</script>
+</body>
+</html>

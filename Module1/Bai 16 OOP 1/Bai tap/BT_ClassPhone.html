@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Mobile {
+        constructor(name) {
+            this.name = name;
+            this.message = "";
+            this.inbox = "";
+            this.outbox = "";
+            this.pin = 100;
+            this.turn = "off";
+            this.check();
+            this.error = "Your phone is off\nPlease turn it on";
+        }
+        check() {
+            if (this.turn === "off") {
+                return false;
+            }
+            return true;
+        }
+        getStatus() {
+            if (this.check()) {
+                return "Phone is " + this.turn + "\nPin : " + this.pin + "%";
+            }
+            return this.error;
+        }
+        turnPhone() {
+            if (this.turn === "off") {
+                this.turn = "on";
+                this.pin--;
+            } else {
+                this.turn = "off";
+            }
+            alert("Phone is "+this.turn)
+        }
+        chargePin() {
+            while (this.pin < 100) {
+                this.pin++;
+            }
+            alert("Pin is full!");
+        }
+        text(message) {
+            if (!this.check()) {
+                alert(this.error);
+            }else {
+                this.message = message;
+                this.pin--;
+            }
+        }
+        getMessage() {
+            if (this.check()) {
+                return this.message;
+            }
+            return this.error;
+        }
+        receiveMessage(mobile, message) {
+            if (!this.check()) {
+                alert(this.error)
+            }else {
+                this.inbox += "\nfrom " + mobile.name + "\n" + message;
+                this.pin--;
+            }
+        }
+        sendMessage(mobile, message) {
+            if (!this.check()) {
+                alert(this.error);
+            }else {
+                mobile.receiveMessage(this, message);
+                alert("đã gửi thành công!");
+                this.outbox += "\nto " + mobile.name + "\n" + message;
+                this.pin--;
+            }
+        }
+        getInbox() {
+            if (this.check()) {
+                this.pin--;
+                return this.inbox;
+            }
+            return this.error;
+        }
+        getOutbox() {
+            if (this.check()) {
+                this.pin--;
+                return this.outbox;
+            }
+            return this.error;
+        }
+    }
+    let phone;
+    let isEnd = false;
+    let Nokia = new Mobile("Nokia");
+    let iphone = new Mobile("iphone");
+    let message;
+    do {
+        let choosePhone = parseInt(prompt("nhập vào điện thoại mà bạn muốn thao tác : \n1.Nokia\n2.iphone"));
+        switch (choosePhone) {
+            case 1:
+                phone = Nokia;
+                break;
+            case 2:
+                phone = iphone;
+                break;
+        }
+        let choose = parseInt(prompt("nhập lựa chọn của bạn: \n1.kiểm tra trạng thái điện thoại" +
+            "\n2.bật và tắt điện thoại" +
+            "\n3.xạc pin điện thoại" +
+            "\n4.soạn tin nhắn" +
+            "\n5.gửi tin nhắn tới một chiếc mobile khác" +
+            "\n6.xem tin trong hộp thư đến" +
+            "\n7.xem tin đã gửi"));
+        switch (choose) {
+            case 1:
+                alert(phone.getStatus());
+                break;
+            case 2:
+                phone.turnPhone();
+                break;
+            case 3:
+                phone.chargePin();
+                break;
+            case 4:
+                message = prompt("nhập vào tin nhắn mà bạn muốn gửi: ");
+                phone.text(message);
+                break;
+            case 5:
+                message = phone.getMessage();
+                if (phone === Nokia){
+                    phone.sendMessage(iphone,message);
+                }else {
+                    phone.sendMessage(Nokia,message);
+                }
+                break;
+            case 6:
+                document.write(phone.getInbox);
+                break;
+            case 7:
+                document.write(phone.getOutbox());
+                break;
+        }
+    }while (!isEnd);
+</script>
+</body>
+</html>

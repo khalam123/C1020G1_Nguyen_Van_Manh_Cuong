@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do you love me</title>
+</head>
+<body>
+<form style="text-align: center">
+    <h1>Do You Love Me</h1>
+    <input type="button" value="Yes" onclick="Yes()">
+    <input type="button"  value="No" onmouseover = "No()" style="position: absolute;left: auto;top: auto" id="no">
+
+</form>
+<script>
+    function Yes() {
+        alert('<3');
+    }
+    function No(){
+        let no = document.getElementById('no');
+        let Ox = Math.round(Math.random() * window.innerWidth);
+        let Oy = Math.round(Math.random() * window.innerHeight);
+        no.style.left =  Ox + 'px';
+        no.style.top = Oy + 'px';
+
+    }
+</script>
+</body>
+
+</html>

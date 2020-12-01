@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập vòng lập 1</title>
+</head>
+<style>
+    div{
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+    div:hover{
+        color: burlywood;
+        transition: all .2s ease-in-out;
+    }
+    h2{
+        color: coral;
+        text-align: center;
+    }
+</style>
+<body>
+<div onclick="Bai1()">Bài 1: Sử dụng vòng lặp để đếm từ 1 đến 100. Khi số là 99, hiển thị hộp thoại thông báo là đã hoàn thành.</div>
+<div onclick="Bai2()">Bài 2: Sử dụng hàm prompt() để lấy thông tin nhiệt độ hiện tại được nhập bởi người truy cập. Nếu nhiệt độ nhập vào trên 100, yêu cầu người dùng giảm nhiệt độ. Nếu nhiệt độ dưới 20, yêu cầu người dùng tăng nhiệt độ.</div>
+<div onclick="Bai3()">Bài 3: Hiển thị ra 20 số trong dãy fibonacci đầu tiên.</div>
+<div onclick="Bai4()">Bài 4: Tìm số đầu tiên trong dãy fibonacci chia hết cho 5.</div>
+<div onclick="Bai5()">Bài 5: Tính tổng của 20 số đầu tiên trong dãy fibonacci.</div>
+<div onclick="Bai6()">Bài 6: Tính tổng của 30 số chia hết cho 7 đầu tiên trong các số tự nhiên.</div>
+<div onclick="Bai7()">Bài 7: Hãy viết một chương trình in ra các số từ 1 đến 100. Nhưng nếu số chia hết cho 3 thì in ra "Fizz", 5 thì in ra "Buzz" thay vì in ra số đó. Và nếu số đó chia hết cho cả 3 và 5 thì in ra chữ "FizzBuzz".</div>
+<div onclick="Bai8()">Bài 8: Game đoán số</div>
+</body>
+<script>
+    function Bai1(){
+        let count = 0;
+        for(let i=1;i<100;i++){
+            document.write(i + " ");
+            }
+        document.write("Da hoan thanh");
+    }
+    function Bai2(){
+        let nhietdo = parseInt(prompt("Nhap nhiet do "));
+        while (nhietdo<20 || nhietdo>100){
+            if(nhietdo<20){
+                nhietdo = prompt('Nhiet do qua thap yeu cau tang nhiet do: ');
+            }else if (nhietdo>100){
+                nhietdo = prompt('Nhiet do qua cao yeu cau giam nhiet do: ');
+            }
+
+        }
+        alert('Nhiet do phu hop');
+    }
+    function Bai3(){
+        let a1 = 0;
+        let a2 = 1;
+        let a3;
+        let num = 20;
+        document.write(a1 + "<br />");
+        document.write(a2 + "<br />");
+        for (let i = 3; i <= num; i++) {
+            a3 = a1 + a2;
+            a1 = a2;
+            a2 = a3;
+
+            document.write(a3 + "<br />");
+        }
+    }
+    function Bai4(){
+        let a1 = 0;
+        let a2 = 1;
+        let a3;
+        let num = 20;
+        for (let i = 3; i <= num; i++) {
+            a3 = a1 + a2;
+            a1 = a2;
+            a2 = a3;
+            if (a3 % 5 == 0){
+                alert("Số đầu tiên trong dãy Fibonacci chia hết cho 5 là: "+ a3);
+                break;
+            }
+
+        }
+    }
+    function Bai5(){
+        let a1 = 0;
+        let a2 = 1;
+        let a3;
+        let num;
+        let sum = a1+a2;
+        for (num = 3 ;num <= 20; num++) {
+            a3 = a1 + a2;
+            a1 = a2;
+            a2 = a3;
+            sum +=a3;
+        }
+        document.write(sum);
+
+    }
+    function Bai6(){
+
+        let sum = 0;
+        for ( let i = 1;i <=30;i++){
+                sum += i*7;
+            }
+        alert('Tổng 30 số tự nhiên đầu tiên chia hết cho 7 là: ' + sum);
+        }
+
+    function Bai7(){
+        let i;
+        for(i=1;i<=100;i++){
+            if(i % 3 == 0 && i % 5 == 0){
+                document.write(' Fizz.Buzz ');
+                continue;
+            }else if(i % 5 == 0){
+                document.write(" Buzz ");
+                continue;
+            }else if (i % 3 == 0 ){
+                document.write(" Fizz ");
+                continue;
+            }
+            document.write(" " + i+'  ');
+        }
+    }
+    function Bai8(){
+        let num1,num2;
+        do {
+             num1 = parseInt(prompt('Nhap so bat dau: '));
+             num2 = parseInt(prompt('Nhap so ket thuc'));
+        }while(num1 > num2);
+        let numRandom = parseInt((Math.random()*num2)+num1);
+        // alert(numRandom);
+        let result = parseInt(prompt("Nhap so du doan"));
+        for(let i = 0;i<2;i++){
+            if(numRandom != result){
+                result = prompt("Hay doan lai");
+                if(i==1){
+                    if(numRandom == result) {
+                        alert("Chuc mung ban doan dung");
+                    }else {
+                        alert("Game over");
+                    }
+                }
+            }else{
+                alert("Chuc mung ban doan dung");
+                break;
+
+            }
+        }
+    }
+
+
+</script>
+</html>

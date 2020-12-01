@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyen tap Mang 1</title>
+</head>
+<style>
+    div{
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+    div:hover{
+        color: tomato;
+        transition: all .2s ease-in-out;
+    }
+    h2{
+        color: coral;
+        text-align: center;
+    }
+</style>
+<body>
+<h2> LUYỆN TẬP MẢNG 1</h2>
+<div onclick="Bai1()">Bài 1- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử. Chương trình thực hiện tính và hiển thị xem có bao nhiêu số nguyên lớn hơn hoặc bằng 10.</div><br><br>
+<div onclick="Bai2()">Bài 2- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử khác nhau. Chương trình hiển thị ra được phần tử có giá trị lớn nhất trong mảng và vị trí của phần tử đó.</div><br><br>
+<div onclick="Bai3()">Bài 3- Viết chương trình khởi tạo mảng số nguyên. Hiển hiện giá trị lớn nhất trong mảng đó. In ra giá trị trung bình của các phần tử trong mảng.</div><br><br>
+<div onclick="Bai4()">Bài 4- Viết chương trình khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.</div><br><br>
+<div onclick="Bai5()">Bài 5- Viết chương trình đếm số nguyên âm trong một chuỗi</div><br><br>
+<div onclick="Bai6()">Bài 6- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. Chương trình tìm xem V có nằm trong mảng số nguyên không? Nếu V thuộc mảng số nguyên thì in ra "V is in the array" còn lại in ra "V is not in the array".</div><br><br>
+<div onclick="Bai7()">Bài 7- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. Chương trình kiểm tra xem V có thuộc mảng đã cho không, nếu V thuộc mảng đã cho xoá V khỏi mảng (Bản chất việc xoá ở đây tức là dịch phần tử ở bên phải V sang vị trí của V, và gán 0 cho phần tử cuối cùng của mảng</div><br><br>
+<div onclick="Bai8()">Bài 8- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử. Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.</div><br><br>
+<div onclick="Bai9()">Bài 9- Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b. Mảng c là một mảng được khai báo gồm 20 phần tử số nguyên. Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c. Hiển thị mảng c.</div><br><br>
+
+</body>
+<script>
+    function Bai1() {
+        let n = parseInt(prompt("Nhập số lượng phần tử có trong mảng "));
+        if(n>0){
+            let i=0;
+            let a = [];
+            while(i < n){
+                 let b = parseInt(prompt("Nhập giá trị a ["+i+"]"));
+                 a.push(b);
+                 i++;
+            }
+            let count = 0;
+            for(let i=0;i<a.length;i++){
+                if(a[i]>=10){
+                    count ++;
+                }
+            }
+            alert("Có "+count+" số nguyên >=10");
+        }else{
+            alert("Vì số lượng phần tử bạn nhập < 0 nên mảng ko có phần tử nào để thực hiện yêu cầu");
+        }
+    }
+    function Bai2() {
+        let array = [];
+        for(let i=0; i<10;i++){
+            let element = parseInt(prompt("Nhập giá trị a["+i+"] "));
+            array.push(element);
+        }
+        let max = array[0];
+        let index = 0;
+        for( let i=0;i<array.length;i++){
+            if(array[i] > max ){
+                max = array[i];
+                index = i;
+            }
+        }
+        alert("Số lớn nhất trong mảng = "+max+" và nằm ở vị trí index = "+index);
+    }
+    function Bai3() {
+        let n = parseInt(prompt("Nhập số lượng phần tử có trong mảng "));
+        let array = [];
+        if(n>0){
+            let i=0;
+            while(i < n){
+                let element = parseInt(prompt("Nhập giá trị a["+i+"]"));
+                array.push(element);
+                i++;
+            }
+
+            let sum = 0;
+            let max = array[0];
+            for( let i=0;i < array.length;i++) {
+                if (array[i] > max) {
+                max = array[i];
+                }
+                sum += array[i];
+            }
+            alert("Số lớn nhất trong mảng là "+max+" và trung bình cộng của mảng là "+(sum/n));
+        }else{
+            alert("Vì số bạn nhập < 0 nên mảng ko có phần tử nào để thực hiện yêu cầu");
+        }
+    }
+    function Bai4() {
+        let n = parseInt(prompt("Nhập số lượng phần tử có trong mảng "));
+        let array = [];
+        if(n>0){
+            let i=0;
+            while(i < n){
+                let element = parseInt(prompt("Nhập giá trị a["+i+"]"));
+                array.push(element);
+                i++;
+            }
+            alert("Mảng hiện có là [ "+array+" ]"+"\n"+"Mảng sau khi đảo ngược là [ "+array.reverse()+" ]");
+        }else{
+            alert("Vì số bạn nhập < 0 nên mảng ko có phần tử nào để thực hiện yêu cầu");
+        }
+    }
+    function Bai5() {
+        let n = parseInt(prompt("Nhập số lượng phần tử có trong mảng "));
+        let array = [];
+        if(n>0){
+            for(let i=0;i<n;i++){
+                let element = parseInt(prompt("Nhập giá trị a["+i+"]"));
+                array.push(element);
+            }
+
+            let count = 0;
+            for(let i =0;i<array.length;i++){
+                if(array[i]<0){
+                    count++;
+                }
+            }
+            alert("Có "+count+" số nguyên âm ở trong mảng");
+        }else{
+            alert("Vì số bạn nhập < 0 nên mảng ko có phần tử nào để thực hiện yêu cầu");
+        }
+    }
+    function Bai6() {
+        let n = parseInt(prompt("Nhập số lượng phần tử có trong mảng "));
+        let array = [];
+        if(n>0){
+            for(let i=0;i<n;i++){
+                let element = parseInt(prompt("Nhập giá trị a["+i+"]"));
+                array.push(element);
+            }
+            let V = parseInt(prompt("Nhập số nguyên V:"));
+            let flag = false;
+            for(let i=0;i<array.length;i++){
+                if(V == array[i]){
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag == true){
+                alert("V is in the array");
+            }else{
+                alert("V isn't in the array");
+            }
+        }else{
+            alert("Vì số bạn nhập < 0 nên mảng ko có phần tử nào để thực hiện yêu cầu");
+        }
+    }
+    function Bai7() {
+        let n = parseInt(prompt("Nhập số lượng phần tử có trong mảng "));
+        let array = [];
+        if(n>0){
+            for(let i=0;i<n;i++){
+                let element = parseInt(prompt("Nhập giá trị a["+i+"]"));
+                array.push(element);
+            }
+            alert("Mảng ban đầu là [ "+array+" ]");
+            let V = parseInt(prompt("Nhập số nguyên V:"));
+            let flag = false;
+            let num =0;
+            for(let i=0;i<array.length -1;i++){
+                if(V === array[i]) {
+                    // array.splice(i,1);
+                    // array.push(0);
+                    // flag = true;
+                    num = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = num;
+                    flag = true;
+                }
+            } if (flag === true){
+                array[array.length-1] = 0;
+                alert("Mảng sau khi kiểm tra và xoá số nguyên V [ "+array+" ]");
+            } else {
+                alert("Số nguyên V ko có trong mảng")
+            }
+         //   array[array.length-1] = 0;
+            // if(flag == true){
+       //          alert("Mảng sau khi kiểm tra và xoá số nguyên V [ "+array+" ]");
+            // }else{
+            //     alert("Số nguyên V ko có trong mảng")
+            // }
+         }else{
+           alert("Vì số bạn nhập < 0 nên mảng ko có phần tử nào để thực hiện yêu cầu");
+        }
+    }
+    function Bai8() {
+        let n = prompt("Nhập số lượng phần tử có trong mảng ");
+        let array = [];
+        if(n>0){
+            for(let i=0;i<n;i++){
+                let element = prompt("Nhập giá trị a["+i+"]");
+                array.push(element);
+            }
+            alert(array.sort((a,b) => b-a));
+        }else{
+            alert("Vì số lượng phần tử bạn nhập < 0 nên mảng ko có phần tử nào để thực hiện yêu cầu");
+        }
+    }
+    function Bai9(){
+        let a = [];
+        let b = [];
+        let c = [];
+            for(let i=0;i<10;i++){
+                let element = prompt("Nhập giá trị a["+i+"]");
+                a.push(element);
+            }
+        for(let i=0;i<10;i++){
+            let element = prompt("Nhập giá trị b["+i+"]");
+            b.push(element);
+        }
+        for(let i=0;i<20;i++){
+            let element = prompt("Nhập giá trị c["+i+"]");
+            c.push(element);
+        }
+        alert(c.concat(b,a));
+    }
+</script>
+</html>

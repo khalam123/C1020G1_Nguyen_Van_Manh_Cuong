@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tu Dien</title>
+</head>
+<body>
+<h2>TỪ ĐIỂN BẤT ỔN</h2>
+<form>
+    <input type="text" id="text">
+    <input type="button" value="Dịch" onclick="Translate()">
+</form>
+<hr/>
+<p id="result"></p>
+<script>
+    let Vietnamese = ['Đi','Ngủ','Tấn Công','Hát','Nhảy','Ăn','Uống'];
+    let English = ['go','sleep','attack','sing','jump','eat','drink'];
+
+    function Translate() {
+        let search = document.getElementById('text').value;
+
+        for(let i=0;i<English.length;i++){
+            if(search === English[i]){
+                document.getElementById('result').innerHTML = Vietnamese[i];
+            }else{
+                document.getElementById('result').innerHTML = "Từ điển cùi chưa biết dịch từ này. Vui lòng ra Google mà dịch :)))";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

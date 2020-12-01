@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyen tap vong lap 2</title>
+</head>
+<style>
+    div{
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+    div:hover{
+        color: tomato;
+        transition: all .2s ease-in-out;
+    }
+    h2{
+        color: coral;
+        text-align: center;
+    }
+</style>
+<body>
+<div onclick="Bai1()">Bài 1: In dãy Finonaci</div>
+<div onclick="Bai2()">Bài 2: Tính giai thừa của một số nguyên dương</div>
+<div onclick="Bai3()">Bài 3: In tam giác vuông. Các góc vuông nằm ở các vị trí khác nhau</div>
+<div onclick="Bai4()">Bài 4: In hình chữ nhật</div>
+<div onclick="Bai5()">Bài 5: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lại con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</div>
+<div onclick="Bai6()">Bài 6: In hình trái tim</div>
+</body>
+<script>
+    function Bai1() {
+        let a1 = 0;
+        let a2 = 1;
+        let a3;
+        let num = parseInt(prompt("Nhập số lượng số muốn in ra"));
+        document.writeln(a1);
+        document.writeln(a2);
+        for (let i = 3; i <= num; i++) {
+            a3 = a1 + a2;
+            a1 = a2;
+            a2 = a3;
+            document.writeln(a3);
+        }
+    }
+    function Bai2() {
+        let a = parseInt(prompt("Nhập số giai thừa"));
+        let result = 1;
+        for(let i=1;i<=a;i++){
+            result *= i;
+        }
+        alert(a+"! = "+result);
+
+    }
+    function Bai3() {
+        let i,j,z;
+        for (i=1;i<=5;i++){
+            for(j=1;j<=i;j++){
+                document.writeln("*");
+            }document.write("<br>");
+        }
+        document.write("<br>")
+        for( i=1;i<=5;i++){
+            for (j=5;j>=i;j--){
+                document.writeln("*");
+            }document.write("<br>");
+        }
+        document.write("<br>")
+        for(i=1;i<=5;i++){
+            for(j=5;j>=i;j--){
+                document.writeln("&nbsp&nbsp");}
+            for(z=1;z<=i;z++){
+                document.writeln("*");
+            }document.write("<br>");
+        }document.write("<br>");
+        for(i=1;i<=5;i++){
+            for(j=1;j<=i;j++){
+                document.writeln("&nbsp&nbsp");}
+                for(z=5;z>=i;z-- ){
+                    document.writeln("*");
+            }document.write("<br>");
+        }
+    }
+    function Bai4() {
+        let i,j;
+        for(i=1;i<7;i++){
+            for(j=1;j<=30;j++){
+                if(j == 1 || j== 30 || i == 1 || i == 6 ){
+                        document.write("*");
+                }else{
+                    document.write("&nbsp&nbsp");
+                }
+            }
+            document.write('<br>');
+        }
+    }
+    function Bai5() {
+        let a = prompt("Nhập số tiền vay");
+        let b = prompt("Nhập số tháng vay với lãi suất cố định là 3% mỗi tháng ");
+        for(let i =0; i<b; i++){
+            a = a*1.3;
+        }
+        alert("Số tiền phải trả là  "+ a+" sau "+b+" tháng vay" );
+    }
+    function Bai6() {
+        let i,j;
+        document.write("<table width='50%' cellpadding='5'cellspacing='50' style='color: darkred; background-color: lavenderblush; margin: auto'>");
+        for (i=1;i<=7;i++){
+            document.write("<tr>");
+            for(j=1;j<=7;j++){
+                document.write('<td>');
+                if (i==1 && (j==1 || j==4 || j==7)||
+                    (i==5 && (j==1 || j== 7) ||
+                        (i==6 && (j<=2 || j>=6) ||
+                            (i == 7 && (j<=3 || j>=5))))){
+                                document.write("&nbsp");
+                }else{
+                    document.write('*');
+                }document.write('</td>');
+            }document.write('</tr>');
+        }
+
+    }
+</script>
+</html>

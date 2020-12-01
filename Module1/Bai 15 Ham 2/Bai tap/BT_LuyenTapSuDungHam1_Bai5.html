@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập và sử dụng hàm 1</title>
+</head>
+<body>
+
+
+<script>
+    let a = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+    let b = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+    let c = prompt("Nhập chuỗi: ");
+
+    function search(string) {
+        let i;
+        for( i=0;i<a.length;i++){
+            if(string == a[i]){
+                alert('Chòm sao đó là: '+b[i]);
+                break;
+            }
+        }
+        if(i == a.length){
+            alert("Không tìm thấy chòm sao nào");
+        }
+    }
+    search(c);
+</script>
+</body>
+</html>

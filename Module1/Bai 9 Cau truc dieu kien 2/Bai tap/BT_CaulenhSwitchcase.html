@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cau lenh Switch - case</title>
+</head>
+<body>
+<form id="dayNum">
+    <input type="number" name="month">
+    <input type="button" name="result" value="Tính số ngày" onclick="NumDays()"><br><br>
+    <p id="result"></p>
+</form>
+<script>
+    let form = document.getElementById('dayNum');
+    let num = form.month;
+    let result = document.getElementById('result');
+    function NumDays() {
+        switch (parseInt(num.value)) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                result = " co 31 ngay";
+                break;
+            case 2:
+                result = " co 28 ngay hoac 29 ngay";
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                result = 'Thang 11 co 30 ngay';
+                break;
+            default:
+                result = 'Khong xac dinh';
+        }
+        document.write('Thang ' + num.value + ': ' + result);
+    }
+</script>
+</body>
+</html>

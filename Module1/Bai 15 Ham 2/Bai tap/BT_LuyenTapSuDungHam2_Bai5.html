@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Min(){
+        let a = parseInt(prompt("Nhập số nguyên thứ 1: "));
+        let b = parseInt(prompt("Nhập số nguyên thứ 2: "));
+        let c = parseInt(prompt("Nhập số nguyên thứ 3: "));
+        let min = a;
+
+        if(b < min){
+            if(b < c){
+                min = b;
+                return min;
+            }else{
+                min = c;
+                return  min;
+            }
+        }else
+            return min;
+    }
+    alert("Số nhỏ nhất trong 3 số là "+Min());
+
+</script>
+</body>
+</html>

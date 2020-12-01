@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+</head>
+<body>
+<h2>Calculator</h2>
+<form name="SimpleCal">
+    <input type="text"  id="data1">
+    <input type="text"  id="data2"><br><br>
+
+
+    <input type="button" name="plus" value="Addition(+)" onclick="run1()">
+    <input type="button" name="minus" value="Subtraction(-)" onclick="run2()">
+    <input type="button" name="multi" value="Multiplication(X)" onclick="run3()">
+    <input type="button" name="div" value="Division(/)" onclick="run4()">
+
+</form>
+<p id="result"></p>
+<script>
+    let num1 = document.getElementById('data1');
+    let num2 = document.getElementById('data2');
+
+    function run1() {
+        let plus =  parseInt(num1.value) +parseInt(num2.value);
+        document.getElementById("result").innerHTML="Result Addition: " + plus;
+    }
+    function run2() {
+        let minus = num1.value - num2.value;
+        document.getElementById("result").innerHTML="Result Subtraction: " + minus;
+    }
+    function run3() {
+        let multi = num1.value * num2.value;
+        document.getElementById("result").innerHTML="Result Multiplication: " + multi;
+    }
+    function run4() {
+        let div = num1.value / num2.value;
+        document.getElementById("result").innerHTML="Result Division: " + div;
+    }
+</script>
+</body>
+</html>

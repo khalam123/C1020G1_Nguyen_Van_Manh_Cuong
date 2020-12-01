@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Su dung ham co san cua mang</title>
+</head>
+<style>
+    div{
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+    div:hover{
+        color: tomato;
+        transition: all .2s ease-in-out;
+    }
+    h2{
+        color: coral;
+        text-align: center;
+    }
+</style>
+<body>
+<div onclick="Bai1()">Bài 1: Viết một chương trình Javascript để nối tất cả các phần tử trong một mảng chuỗi lại với nhau.<br>
+    Ví dụ có mảng chuỗi như sau: myColor = ["Red", "Green", "White", "Black"];<br>
+    Sau khi thực thi chương trình sẽ trả về dạng như sau : "Red,Green,White,Black"</div><br>
+<div onclick="Bai2()">Bài 2: Viết một chương trình nhận một số nhập vào và chèn dấu (-) giữa 2  số chẵn.<br>
+    Ví dụ nếu bạn nhập vào 025468 thì kết quả của chương trình sẽ là 0-254-6-8.</div><br>
+<div onclick="Bai3()">Bài 3: Viết một chương trình nhập vào một chuỗi và chuyển các ký tự chữ thường trong chuỗi vừa nhập sang thành dạng chữ hoa.<br>
+    Ví dụ: nếu bạn nhập vào chuỗi 'The Quick Brown Fox' kết quả của chương trình là 'tHE qUICK bROWN fOX'.</div>
+<script>
+function Bai1() {
+    let myColor = ["Red", "Green", "White", "Black"];
+    myColor1 = myColor.toString();
+    alert(myColor1);
+    alert(myColor.join(' - '));
+}
+function Bai2() {
+    let a = [0,2,5,4,6,8];
+    let result = [a[0]];
+    for( let i=1;i<a.length;i++){
+        if(a[i-1]%2 === 0 && a[i] % 2 ===0){
+            result.push(' - ', a[i]);
+        }else{
+            result.push(a[i]);
+        }
+    }
+    alert(result.join(''));
+}
+function Bai3() {
+    let a = 'The Quick Brown Fox';
+    let UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let LOWER = 'abcdefghijklmnopqrstuvwxyz';
+    let result = [];
+ //   alert(a.length)
+    for(let i=0;i<a.length;i++) {
+        if(UPPER.includes(a[i])){
+            result.push(a[i].toLowerCase());
+        }else if(LOWER.includes(a[i])){
+            result.push(a[i].toUpperCase());
+        }else{
+            result.push(a[i]);
+        }
+    }
+    alert(result.join(' '));
+}
+</script>
+</body>
+</html>

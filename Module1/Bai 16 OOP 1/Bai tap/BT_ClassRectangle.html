@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Rectangle</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="800px" height="400px" style="border:1px solid #d3d3d3;"></canvas>
+<p id="result">a</p>
+<script>
+    class Rectangle{
+        constructor(width,height) {
+            this.width = width;
+            this.height = height;
+        }
+        Area() {
+            return this.width * this.height;
+        }
+    Perimeter(){
+        return (this.width + this.height)*2;
+    }
+        createRectangle(){
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.beginPath();
+            ctx.fillRect(0 , 0, this.width,this.height);
+            // ctx.fill();
+            // document.writeln("Area is: "+ this.Area());
+            // document.writeln("Perimeter is " + this.Perimeter());
+            // alert(this.Area());
+            document.getElementById('result').innerText = "Area is: "+ this.Area()+"\n"+"Perimeter is " + this.Perimeter();
+
+        }
+
+    }
+    let a = new Rectangle(200,100);
+    a.createRectangle();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luyện tập câu điều kiện 2</title>
+</head>
+<style>
+    div{
+        font-weight: bolder;
+        text-decoration: underline;
+    }
+    div:hover{
+        color: burlywood;
+        transition: all .2s ease-in-out;
+    }
+    h2{
+        color: coral;
+        text-align: center;
+    }
+</style>
+<body>
+<h2>CHỌN BÀI TẬP MUỐN XEM</h2>
+<div onclick="Bai1()">Bài 1: Chuyển từ độ C sang độ F.</div>
+<div onclick="Bai2()">Bài 2: Chuyển từ mét sang feet</div>
+<div onclick="Bai3()">Bài 3: Tính diện tích hình vuông khi biết cạnh a.</div>
+<div onclick="Bai4()">Bài 4: Tính diện tích hình  chữ nhật khi biết 02 cạnh a, b.</div>
+<div onclick="Bai5()">Bài 5: Tính diện tích tam giác vuông khi biết 02 cạnh kề a, b.</div>
+<div onclick="Bai6()">Bài 6: Giải phương trình bậc 1.</div>
+<div onclick="Bai7()">Bài 7: Giải phương trình bậc 2.</div>
+<div onclick="Bai8()">Bài 8: Kiểm tra xem một số nhập vào có phải là tuổi của một người không. Một số nguyên là tuổi của một người khi nhỏ 120 và lơn hơn 0.</div>
+<div onclick="Bai9()">Bài 9: Kiểm tra xem 3 số thực (a, b, c) nhập vào có phải là cạnh của một tam giác. </div>
+<div onclick="Bai10()">Bài 10: Viết chương trình tính giá điện.</div>
+<div onclick="Bai11()">Bài 11: Viết chương trình tính thuế thu nhập cá nhân.</div>
+<div onclick="Bai12()">Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi xuất hàng tháng.</div>
+
+<script>
+    function Bai1() {
+        let cen = parseFloat(prompt('Nhập nhiệt độ C'));
+        let fal = cen * 9/5 +32;
+        alert(cen +' độ C'+ ' = '+ fal + ' độ F');
+    }
+    function Bai2() {
+        let m = parseFloat(prompt('Nhập số mét'));
+        let ft = m * 3.2808;
+        alert(m + 'm = ' + ft +'ft');
+    }
+    function Bai3() {
+        let a = parseInt(prompt("Nhập cạnh hình vuông"));
+        let area = a * a;
+        alert('Diện tích hình vuông là ' + area);
+    }
+    function Bai4() {
+        let a = parseInt(prompt('Nhập chiều dài hình chữ nhật'));
+        let b = parseInt(prompt('Nhập chiều rộng hình chữ nhật'));
+        let area = a * b;
+        alert('' + area);
+    }
+    function Bai5() {
+        let a = parseInt(prompt('Nhập cạnh thứ nhất tam giác vuông'));
+        let b = parseInt(prompt('Nhập cạnh thứ hai tam giác vuông'));
+        let area = 1/2 * a * b ;
+        alert('Diện tích tam giác vuông là ' + area);
+    }
+    function Bai6() {
+        alert('Phương trình bâc 1: ax + b = 0');
+        let a = parseInt(prompt('Nhập a'));
+        let b = parseInt(prompt('Nhập b'));
+        let x = -b/a;
+        alert('Phương trình '+ a+'x'+' + ' + b + " = 0 \n có nghiệm x = " + x);
+    }
+    function Bai7() {
+        alert('Phương trình bậc 2: ax^2 + bx + c = 0');
+        let a = parseInt(prompt('Nhập a'));
+        let b = parseInt(prompt('Nhập b'));
+        let c = parseInt(prompt('Nhập c'));
+        let delta = b * b - 4 * a * c;
+        let x1, x2;
+        if(a == 0 && b == 0){
+            alert('Phương trình bậc 2: '+ a+'x^2 + ' + b +'x + '+c+' = 0 có vô số nghiệm');
+        }else if(a == 0 && b!=0){
+            x1 = -c/2 * b;
+            alert('Phương trình bậc 2: '+ a+'x^2 + ' + b +'x + '+c+' = 0 có nghiệm = ' + x1);
+        }else if(delta == 0){
+            x1 = x2 = -b/2 * a;
+            alert('Phương trình bậc 2: '+ a+'x^2 + ' + b +'x + '+c+' = 0 có nghiệm kép x1 = x2 = ' + x1);
+        }else if(delta > 0){
+            x1 = (-b - Math.sqrt(delta))/ (2 * a);
+            x2 = (-b + Math.sqrt(delta))/ (2 * a);
+            alert('Phương trình bậc 2: '+ a+'x^2 + ' + b +'x + '+c+' = 0 có 2 nghiệm\n' +
+                ' x1 = ' + x1+'\n' +
+                ' x2 = '+x2);
+        }else{
+            alert('Phương trình bậc 2: '+ a+'x^2 + ' + b +'x + '+c+' = 0 vô nghiệm');
+        }
+
+    }
+    function Bai8() {
+        let age = parseInt(prompt('Nhập số muốn kiểm tra'));
+        if(age>0 && age <120){
+            aler('Số vừa nhập là số tuổi của 1 người');
+        }else{
+            alert('Số vừa nhập không phải là số tuổi');
+        }
+    }
+    function Bai9() {
+        let a = parseFloat(prompt('Nhập số a'));
+        let b = parseFloat(prompt('Nhập số b'));
+        let c = parseFloat(prompt('Nhập số c'));
+        if(a>0 && b>0 && c>0) {
+            if ((a + b) > c || (b + c) > a || (c + a) > b) {
+                alert('Ba số thực vừa nhập là cạnh tam giác ');
+
+            }
+        }else{
+            alert('Ba số thực vừa nhập không phải là cạnh tam giác ');
+        }
+    }
+    function Bai10() {
+        let num = parseFloat(prompt('Nhập số chữ điện (KWh) hộ gia đình dùng điện thoại tháng này\n' +
+            'Nếu số chữ điện >200 thì giá 2300 VNĐ/1 KWh \n' +
+            'Nếu số phút >100 thì giá 1850 VNĐ/1 KWh \n' +
+            'dưới 100 thì giá 1600 VNĐ/1 KWh'));
+        let money;
+        if(num >200){
+            money = num * ((1600*1850*2300)/3);
+        }else if(num >100){
+            money = num * ((1600*1850)/2);
+        }else{
+            money = num * 1600;
+        }
+        alert('Số tiền điện phải trả là: ' + money + ' VNĐ')
+    }
+    function Bai11() {
+        let money = parseInt(prompt('Nhập số tiền thu nhập cá nhân: (triệu VNĐ)'));
+        let tax;
+        switch (true) {
+            case (money>80):
+                tax = money * (30/100);
+                break;
+            case (money>50):
+                tax = money * (25/100);
+                break;
+            case (money>30):
+                tax = money * (20/100);
+                break;
+            case (money>20):
+                tax = money * (15/100);
+                break;
+            case (money>10):
+                tax = money * (10/100);
+                break;
+            case (money>5):
+                tax = money * (5/100);
+                break;
+            default:
+                alert('Không tính thuế thu nhập vì quá nghèo');
+        }
+        alert('Thuế thu nhập phải trả là '+tax+' tr VNĐ ');
+    }
+    function Bai12() {
+        let money = parseInt(prompt('Nhập số tiền gửi ngân hàng (tr VNĐ)'));
+        let interest_rate;
+        let month = parseInt(prompt('Thời gian tiền gửi tính theo tháng'));
+            switch (month) {
+                case '1':
+                case '2':
+                case '3':
+                    alert("Tổng số tiền của bạn là " + money * Math.pow((1+3/100),month)+'tr VNĐ');
+                    break;
+                case '4':
+                case '5':
+                case '6':
+                    alert("Tổng số tiền của bạn là " + money * Math.pow((1+5/100),month)+'tr VNĐ');
+                    break;
+                case '7':
+                case '8':
+                case '9':
+                    alert("Tổng số tiền của bạn là " + money * Math.pow((1+7/100),month)+'tr VNĐ');
+                    break;
+                case '10':
+                case '11':
+                case '12':
+                    alert("Tổng số tiền của bạn là " + money * Math.pow((1+9/100),month)+'tr VNĐ');
+                    break;
+                default:
+                    alert("Tổng số tiền của bạn là " + money * Math.pow((1+1/10),month)+'tr VNĐ');
+            }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bang cuu chuong</title>
+</head>
+<body>
+<script>
+let a = "<table border='1' width='100%' cellspacing='1' cellpadding='10'>";
+for (let i =1 ; i<=10;i++){
+    a = a +"<tr>";
+    for(let j = 2 ; j<10;j++){
+        a = a +"<th>"+j+" x " + i+ " = "+j*i+"</th>";
+    }
+    a = a +"</tr>";
+}
+a = a + "</table>";
+document.write(a);
+</script>
+</body>
+</html>

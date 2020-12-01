@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game đơn giản</title>
+</head>
+<body>
+<div id="game"></div>
+<script>
+    // function Hero(image, top, left, size){
+    //     this.image = image;
+    //     this.top = top;
+    //     this.left = left;
+    //     this.size = size;
+    class Hero{
+        constructor(image, top,left,size) {
+            this.image = image;
+            this.top = top;
+            this.left = left;
+            this.size = size;
+        }
+        getHeroElement(){
+            return '<img width="'+ this.size + '"' +
+                ' height="'+ this.size + '"' +
+                ' src="' + this.image +'"' +
+                ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+        }
+        moveRight(){
+            this.left +=40;
+        }
+        moveLeft(){
+            this.left -=40;
+        }
+        moveDown(){
+            this.top +=40;
+        }
+        moveUp(){
+            this.top -=40;
+        }
+    }
+    let hero = new Hero('42160637_315411702572985_713989294498250752_o.jpg',20,30,500);
+    function start(){
+        if(hero.left < window.innerWidth - hero.size){
+            hero.moveRight();
+        }else if(hero.top < window.innerHeight - hero.size){
+            hero.moveDown();
+        }else {
+            return start1();
+        }
+
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        setTimeout(start, 100)
+    }
+    function start1() {
+        if(hero.left > 0){
+            hero.moveLeft();
+        }else if(hero.top > 0){
+            hero.moveUp();
+        }else{
+            return start();
+        }
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        setTimeout(start1, 50)
+    }
+
+    start();
+</script>
+</body>
+</html>

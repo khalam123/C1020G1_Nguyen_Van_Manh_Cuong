@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi giữa feet và met</title>
+</head>
+<body>
+<h2>Chuyển đổi giữa Feet và Meter</h2>
+<input type="number" id="num"><br><br>
+<input type="button" value="Feet -> Meters" onclick="feetToMeters()">
+<input type="button" value="Meters -> Feet" onclick="meterToFeet()">
+<hr>
+<p>Result: <span id="result"></span></p>
+<script>
+    let num = document.getElementById('num');
+    let result;
+function feetToMeters() {
+    result = 0.305 * num.value;
+    document.getElementById("result").innerHTML = result;
+}
+function meterToFeet() {
+    result = 3.279 * num.value;
+    document.getElementById("result").innerHTML = result;
+
+}
+</script>
+</body>
+</html>
