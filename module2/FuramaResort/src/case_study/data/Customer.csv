@@ -1,0 +1,8 @@
+nameCustomer,dob, gender, idCard, phone,email, typeCustomer, address
+Bris,12/12/2000,Male,123456789,1,abc@abc.com,Vip,DN
+Ashe,11/12/2000,Female,123456798,0,abc@abc.com,normal,HP
+Ashe,3/12/2000,Female,123456798,0,abc@abc.com,normal,HP
+Jame,12/03/1999,Male,123456789,1,abc@abc.com,Vip,QN
+Lov,03/04/1990,Female,123456798,0,abc@abc.com,normal,HN
+Ashe,13/05/2000,Female,123456798,0,abc@abc.com,normal,HCM
+Jay,11/08/2000,Female,123464554,12308213,abc@abc.com,Normal,Da Nang

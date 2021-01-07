@@ -1,0 +1,4 @@
+id, nameService,area, cost Rent, max People, typeRent, standardRoom, descriptionConvenient, areaPool, floor
+SVVL-0001,Villa Dallas,30.0,20.0,19,day,Normal,Normal,30,4
+SVVL-0002,abc villa,31.0,0.0,10,day,Normal,Normal,30.0,4
+SVVL-0003,n villa,31.0,0.0,10,day,Normal,Normal,30.0,4

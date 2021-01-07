@@ -1,0 +1,4 @@
+ID,nameService,area, costRent, maxPeople ,typeRent,standardRoom,descriptionConvenient, floor
+SVHO-0001,House 1,40,10,10,day,VIP,Normal,4
+SVHO-0002,House 2,32,5,10,day,Normal,Normal,3
+SVHO-0003,House 3,30,10,10,day,Normal,Normal,2
