@@ -122,11 +122,54 @@ and exists (select hop_dong.id_hop_dong where month(hop_dong.ngay_lam_hop_dong) 
 
 -- task 13
 
+create temporary table temp
+select dich_vu_di_kem.ten_dich_vu_di_kem as ten_dich_vu_di_kem, count(hop_dong_chi_tiet.id_dich_vu_di_kem) as so_lan_su_dung
+from hop_dong_chi_tiet
+join dich_vu_di_kem on hop_dong_chi_tiet.id_dich_vu_di_kem = dich_vu_di_kem.id_dich_vu_di_kem
+group by dich_vu_di_kem.ten_dich_vu_di_kem;
+select * from temp;
+create temporary table temp1
+select max(temp.so_lan_su_dung) as max_so_lan_su_dung from temp;
+select * from temp1;
 
+select temp.ten_dich_vu_di_kem, temp.so_lan_su_dung from temp
+join temp1 on temp.so_lan_su_dung = temp1.max_so_lan_su_dung;
 
+drop temporary table temp;
+drop temporary table temp1;
 
 -- task 14
+
+select 
+	hop_dong.id_hop_dong, 
+    loai_dich_vu.ten_loai_dich_vu,
+    dich_vu_di_kem.ten_dich_vu_di_kem,
+    count(hop_dong_chi_tiet.id_dich_vu_di_kem) as so_lan_su_dung
+from hop_dong
+ join dich_vu on hop_dong.id_dich_vu = dich_vu.id_dich_vu
+ join loai_dich_vu on dich_vu.id_loai_dich_vu = loai_dich_vu.id_loai_dich_vu
+ join hop_dong_chi_tiet on hop_dong.id_hop_dong = hop_dong_chi_tiet.id_hop_dong
+ join dich_vu_di_kem on dich_vu_di_kem.id_dich_vu_di_kem = hop_dong_chi_tiet.id_dich_vu_di_kem
+ group by dich_vu_di_kem.ten_dich_vu_di_kem having so_lan_su_dung = 1;
+ 
 -- task 15
+
+select 
+	nhan_vien.id_nhan_vien,
+    nhan_vien.ho_ten, 
+    nhan_vien.sdt, 
+    nhan_vien.dia_chi, 
+    trinh_do.trinh_do,
+    bo_phan.ten_bo_phan,
+    count(hop_dong.id_nhan_vien) as so_lan_tao_hop_dong
+from nhan_vien
+ join trinh_do on trinh_do.id_trinh_do = nhan_vien.id_trinh_do
+ join bo_phan on bo_phan.id_bo_phan = nhan_vien.id_bo_phan
+ join hop_dong on hop_dong.id_nhan_vien = nhan_vien.id_nhan_vien
+where hop_dong.ngay_lam_hop_dong between '2018-01-01' and 2019-12-31
+group by nhan_vien.ho_ten
+having so_lan_tao_hop_dong;
+    
 -- task 16
 -- task 17
 -- task 18
@@ -138,7 +181,7 @@ select
     ho_ten as 'ho_ten',
     email as 'email',
     sdt as 'so_dien_thoai',
-    ngay_sinh as 'ngay_sinh',
+    ngay_sinh as 'ngay_sinh',	
     dia_chi as 'dia_chi'
 from nhan_vien
 union all
