@@ -15,6 +15,7 @@ join loai_khach on khach_hang.id_loai_khach_hang = loai_khach.id_loai_khach_hang
 where loai_khach.ten_loai_khach like 'diamond'
 group by khach_hang.id_khach_hang;
 -- task 5
+create view thong_ke as
 select 
     khach_hang.id_khach_hang,
     khach_hang.ho_va_ten,
@@ -31,7 +32,7 @@ from
         left join dich_vu on hop_dong.id_dich_vu = dich_vu.id_dich_vu
         left join hop_dong_chi_tiet on hop_dong.id_hop_dong = hop_dong_chi_tiet.id_hop_dong
         left join dich_vu_di_kem on hop_dong_chi_tiet.id_dich_vu_di_kem = dich_vu_di_kem.id_dich_vu_di_kem;
-
+	
 -- task 6
 select 
 	dich_vu.id_dich_vu,
@@ -171,29 +172,88 @@ group by nhan_vien.ho_ten
 having so_lan_tao_hop_dong;
     
 -- task 16
+delete from nhan_vien where nhan_vien.id_nhan_vien not in(
+select id_nhan_vien from 
+(
+select distinct hop_dong.id_nhan_vien
+from hop_dong
+ join nhan_vien on nhan_vien.id_nhan_vien = hop_dong.id_nhan_vien 
+ where year(hop_dong.ngay_lam_hop_dong) between 2017 and 2019) as tmp);
+
 -- task 17
+
+update khach_hang
+set khach_hang.id_loai_khach_hang = 4001
+where khach_hang.id_khach_hang in (
+	select tk.id_khach_hang
+    from thong_ke tk
+    where tk.ten_loai_khach = 'Platinium' and tk.tong_tien > (10000000 / 25000)
+);
+drop view if exists thong_ke;
 -- task 18
+
+delete from khach_hang where exists(
+select hop_dong.id_hop_dong
+from hop_dong
+where (year(hop_dong.ngay_lam_hop_dong) < 2016) and hop_dong.id_khach_hang = khach_hang.id_khach_hang);
+
 -- task 19
+
+update dich_vu_di_kem
+set gia = gia * 2
+where id_dich_vu_di_kem in (
+	select id_dich_vu_di_kem
+    from thong_ke tk
+    group by tk.id_dich_vu_di_kem
+    having sum(tk.so_luong) > 10
+);
+drop view if exists thong_ke;
 -- task 20
 
 select 
 	id_nhan_vien as 'id',
-    ho_ten as 'ho_ten',
-    email as 'email',
-    sdt as 'so_dien_thoai',
-    ngay_sinh as 'ngay_sinh',	
-    dia_chi as 'dia_chi'
+    ho_ten,
+    email,
+    sdt,
+    ngay_sinh,	
+    dia_chi
 from nhan_vien
 union all
 select
-	id_khach_hang as 'id',
-    ho_va_ten as 'ho_ten',
-    email as 'email',
-    so_dien_thoai as 'so_dien_thoai',
-    ngay_sinh as 'ngay_sinh',
-    dia_chi as 'dia_chi'
+	id_khach_hang,
+    ho_va_ten ,
+    email ,
+    so_dien_thoai,
+    ngay_sinh,
+    dia_chi
 from khach_hang;
 
+-- task 21
+
+create view v_nhan_vien as
+select nhan_vien.*
+from nhan_vien
+join hop_dong on nhan_vien.id_nhan_vien = hop_dong.id_nhan_vien
+where nhan_vien.dia_chi = 'Hai Chau' and hop_dong.ngay_lam_hop_dong = '2019-12-12';
+
+-- task 22
+-- create view v_nhan_vien_1 as
+-- select dia_chi
+-- from v_nhan_vien
+-- where 
+update v_nhan_vien set dia_chi = 'Lien Chieu';
+
+-- task 23
+
+delimiter //
+create procedure sp_1(id_khach_hang int)
+begin
+delete from khach_hang where khach_hang.id_khach_hang = id_khach_hang;
+end;
+// delimiter ;
+call sp_1 (7009);
+
+-- task 24
 
 
  
