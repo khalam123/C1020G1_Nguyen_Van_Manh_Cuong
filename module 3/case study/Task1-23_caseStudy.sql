@@ -182,14 +182,23 @@ from hop_dong
 
 -- task 17
 
-update khach_hang
+-- update khach_hang
+-- set khach_hang.id_loai_khach_hang = 4001
+-- where khach_hang.id_khach_hang in (
+-- 	select tk.id_khach_hang
+--     from thong_ke tk
+--     where tk.ten_loai_khach = 'Platinium' and tk.tong_tien > (10000000 / 25000)
+-- );
+-- drop view if exists thong_ke;
+update khach_hang,
+(select hop_dong.*
+from hop_dong
+join khach_hang on hop_dong.id_khach_hang = khach_hang.id_khach_hang
+where khach_hang.id_loai_khach_hang = 4002 and hop_dong.tong_tien > 10000000 and year(hop_dong.ngay_lam_hop_dong) = 2019
+) as temp_table
 set khach_hang.id_loai_khach_hang = 4001
-where khach_hang.id_khach_hang in (
-	select tk.id_khach_hang
-    from thong_ke tk
-    where tk.ten_loai_khach = 'Platinium' and tk.tong_tien > (10000000 / 25000)
-);
-drop view if exists thong_ke;
+where khach_hang.id_khach_hang = temp_table.id_khach_hang;
+
 -- task 18
 
 delete from khach_hang where exists(
@@ -254,6 +263,7 @@ end;
 call sp_1 (7009);
 
 -- task 24
+-- task 25
 
 
  
