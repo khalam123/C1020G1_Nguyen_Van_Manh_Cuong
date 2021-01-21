@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        ​
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+        ​
+        [class*="col-"] {
+            float: left;
+            padding: 10px;
+        }
+        .header {
+            background-color: black;
+            color: gray;
+            padding: 10px;
+        }
+        .footer {
+            background-color: dimgray;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .panel ul {
+            list-style: none;
+
+        }
+        .panel-1 ul li{
+            display: inline;
+            margin-right:20px;
+
+        }
+        .login{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-12">
+        <div class="header">
+            <div class="panel-1">
+                <ul>
+                    <li>Logo</li>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Projects</li>
+                    <li>Contact</li>
+                    <li class="login">Login</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <div class="panel">
+            <ul>
+                <li>Link</li>
+                <li>Link</li>
+                <li>Link</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="col-6">
+        <h1>Welcome</h1>
+        <p>Khởi đầu là một khu định cư nhỏ trong giai đoạn đầu Thời đại đồ đồng (khoảng năm 3500 TCN),
+            Ebla phát triển thành một đế chế giao thương rồi trở thành cường quốc bành trướng lãnh thổ và áp đặt quyền
+            bá chủ lên phần lớn khu vực miền bắc và miền đông Syria. Ebla bị diệt vong vào thế kỷ 23 TCN;
+            sau đó thành phố này được tái thiết và nhắc đến trong các ghi chép của Triều đại thứ ba của Ur.
+            Ebla đệ nhị kế tục vương quốc đầu tiên nhưng do triều đại mới cai trị.
+            Vương quốc đệ nhị bị diệt vong vào cuối thiên niên kỷ 3 TCN, điều này đã mở đường cho các bộ lạc Amorite
+            tới định cư tại nơi đây và lập nên Ebla đệ tam</p>
+    </div>
+    <div class="col-3">
+        <div class="panel">
+            <ul>
+                <li>ADS</li>
+                <li>ADS</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="footer">
+            <p>Footer Text</p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
