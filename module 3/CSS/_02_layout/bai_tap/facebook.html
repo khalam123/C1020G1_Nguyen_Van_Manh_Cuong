@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .col-1 {
+            width: 8.33%;
+        }
+
+        .col-2 {
+            width: 16.66%;
+        }
+
+        .col-3 {
+            width: 25%;
+        }
+
+        .col-4 {
+            width: 33.33%;
+        }
+
+        .col-5 {
+            width: 41.66%;
+        }
+
+        .col-6 {
+            width: 50%;
+        }
+
+        .col-7 {
+            width: 58.33%;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        .col-9 {
+            width: 75%;
+        }
+
+        .col-10 {
+            width: 83.33%;
+        }
+
+        .col-11 {
+            width: 91.66%;
+        }
+
+        .col-12 {
+            width: 100%;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 10px;
+        }
+
+        header {
+            font-size: 40px;
+            background-color: blue;
+        }
+
+        .sidebar {
+            font-size: 30px;
+        }
+
+        .sidebar ul li {
+            color: black;
+        }
+
+        .sidebar ul li:hover {
+            color: blue;
+        }
+
+        #dating:hover {
+            background-color: deeppink;
+        }
+
+        header {
+            position: sticky;
+        }
+
+        header:hover {
+            color: pink;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        body {
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+<header class="col-12">
+    <div>
+        <h1 class="row">Facebook</h1>
+    </div>
+</header>
+<div class="col-3">
+    <div class="sidebar">
+        <ul>
+            <li>Friends</li>
+            <li id="dating"><a href="#"
+            ><p id="date">Dating</p></a></li>
+            <li><a href="#">Groups</a></li>
+            <li>Market place</li>
+        </ul>
+    </div>
+</div>
+<div style="margin-left:25%">
+
+    <div class="w3-container w3-teal">
+        <h1>Ken Huynh</h1>
+    </div>
+    <img src="https://giaitri.vn/wp-content/uploads/2019/07/avatar-la-gi-01.jpg" alt="" style="width:100%">
+</div>
+</body>
+</html>
