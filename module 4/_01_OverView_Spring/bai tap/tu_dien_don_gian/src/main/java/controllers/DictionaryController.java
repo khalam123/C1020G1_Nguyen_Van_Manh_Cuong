@@ -16,6 +16,6 @@ public class DictionaryController {
         String result = dictionaryService.translate(text);
         //        modelAndView.addObject("text");
         return new ModelAndView("result","resultTranslate",result);
-        
+
     }
 }
