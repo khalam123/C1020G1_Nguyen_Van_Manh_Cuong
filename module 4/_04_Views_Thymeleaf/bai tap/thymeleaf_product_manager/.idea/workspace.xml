@@ -20,49 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33bd917a-a3a1-4921-b6af-06f6dda98c37" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/product_manager/AppConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/product_manager/AppInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/product_manager/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/product_manager/model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/product_manager/service/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/product_manager/service/ProductServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/java/com/codegym/AppConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/java/com/codegym/AppInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/java/com/codegym/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/java/com/codegym/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/java/com/codegym/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/java/com/codegym/service/CustomerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/webapp/WEB-INF/views/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/webapp/WEB-INF/views/delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/webapp/WEB-INF/views/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/webapp/WEB-INF/views/layout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../thuc hanh/thymeleaf_manager_customer/src/main/webapp/WEB-INF/views/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/build/libs/hom_thu_dien_tu-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../../_03_Spring_DataBinding/bai tap/hom_thu_dien_tu/build/libs/hom_thu_dien_tu-1.0-SNAPSHOT.war" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_05_CSDL_ORM/thuc hanh/manager_customer_list/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_05_CSDL_ORM/thuc hanh/manager_customer_list/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_05_CSDL_ORM/thuc hanh/manager_customer_list/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_05_CSDL_ORM/thuc hanh/manager_customer_list/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_05_CSDL_ORM/thuc hanh/manager_customer_list/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../_05_CSDL_ORM/thuc hanh/manager_customer_list/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +225,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1614158272153</updated>
-      <workItem from="1614158275898" duration="9389000" />
+      <workItem from="1614158275898" duration="11026000" />
     </task>
     <servers />
   </component>
@@ -336,5 +300,9 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="713" height="238" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1614227601392" />
+    <state x="114" y="62" key="new project wizard" timestamp="1614302847177">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="114" y="62" key="new project wizard/0.0.1440.900@0.0.1440.900" timestamp="1614302847177" />
   </component>
 </project>
