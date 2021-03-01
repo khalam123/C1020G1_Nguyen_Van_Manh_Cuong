@@ -15,7 +15,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    private static Map<Integer, Product> productMap;
+    private static final Map<Integer, Product> productMap;
 
     static {
         productMap = new TreeMap<>();
@@ -41,5 +41,15 @@ public class ProductServiceImpl implements ProductService {
 //
 //        studentMap.put(id, student);
         this.productRepository.save(product);
+    }
+
+    @Override
+    public void update(Integer id, Product product) {
+        productMap.put(id,product);
+    }
+
+    @Override
+    public void remove(Integer id) {
+        productMap.remove(id);
     }
 }

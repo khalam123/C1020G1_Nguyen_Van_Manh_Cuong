@@ -5,10 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import product_management.model.Product;
 import product_management.service.ProductService;
 
 @Controller
+
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -44,5 +46,16 @@ public class ProductController {
         return  "redirect:/home";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editProduct(@PathVariable Integer id, Model model){
+        model.addAttribute("productEdit",productService.findById(id));
+        return "/edit";
+    }
+
+    @PostMapping("/update")
+    public String update(Product product){
+        productService.update(product.getId(),product);
+        return "redirect:/home";
+    }
 
 }

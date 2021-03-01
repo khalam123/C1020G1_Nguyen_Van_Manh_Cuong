@@ -4,16 +4,19 @@
     <title>Create Product</title>
 </head>
 <body>
+<a href="/home">Go Back Home</a>
 <div th:replace="~{common::headerProduct}"></div>
+<div id="form">
 <form action="/create" th:object="${productObj}" method="post">
     <p>Name: </p>
     <!--        <input type="text" th:field="*{name}"  />-->
     <input type="text" th:field="*{name}"  />
     <p>Price: </p>
     <input type="date" th:field="*{price}" />
-
+    <br><br>
     <input type="submit" value="Save" />
 </form>
+</div>
 <div th:replace="~{common::footerProduct}"></div>
 </body>
 </html>
