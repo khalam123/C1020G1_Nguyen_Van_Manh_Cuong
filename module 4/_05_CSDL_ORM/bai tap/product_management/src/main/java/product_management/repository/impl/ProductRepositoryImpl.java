@@ -32,13 +32,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public void update(Integer id, Product product) {
-        product = BaseRepository.entityManager.find(Product.class, id);
-        if (product!=null){
+
             EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
             entityTransaction.begin();
-            BaseRepository.entityManager.persist(product);
+            BaseRepository.entityManager.merge(product);
             entityTransaction.commit();
-        }
+
     }
 
     @Override

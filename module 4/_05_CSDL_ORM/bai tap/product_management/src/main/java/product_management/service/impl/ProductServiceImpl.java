@@ -7,22 +7,11 @@ import product_management.repository.ProductRepository;
 import product_management.service.ProductService;
 
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
-
-    private static final Map<Integer, Product> productMap;
-
-    static {
-        productMap = new TreeMap<>();
-        productMap.put(1, new Product(1, "Iphone 8", 3000));
-        productMap.put(2, new Product(2, "Iphone X", 4000));
-        productMap.put(3, new Product(3, "Iphone 11", 5000));
-    }
 
     @Override
     public List<Product> findAll() {
@@ -36,20 +25,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void save(Product product) {
-//        Integer id = (int) (Math.random() * 1000);
-//        student.setId(id);
-//
-//        studentMap.put(id, student);
         this.productRepository.save(product);
     }
 
     @Override
     public void update(Integer id, Product product) {
-        productMap.put(id,product);
+        productRepository.update(id,product);
     }
 
     @Override
     public void remove(Integer id) {
-        productMap.remove(id);
+        productRepository.remove(id);
     }
 }
