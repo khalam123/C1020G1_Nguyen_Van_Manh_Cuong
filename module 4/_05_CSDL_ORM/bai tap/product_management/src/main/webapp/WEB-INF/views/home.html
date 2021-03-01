@@ -19,7 +19,6 @@
         <th>Action</th>
         <th>Action</th>
     </tr>
-    <!--        <c:forEach var="student" items="${listStudent}">-->
     <tr th:each="product : ${list_product}">
         <td th:text="${product.id}"></td>
         <td th:text="${product.name}"></td>
@@ -28,7 +27,6 @@
         <td><a th:href="@{/edit/{id}(id=${product.id})}">edit</a></td>
         <td><a th:href="@{/delete/{id}(id=${product.id})}">delete</a></td>
     </tr>
-    <!--        </c:forEach>-->
 </table>
 <div th:replace="~{common::footerProduct}"></div>
 </body>

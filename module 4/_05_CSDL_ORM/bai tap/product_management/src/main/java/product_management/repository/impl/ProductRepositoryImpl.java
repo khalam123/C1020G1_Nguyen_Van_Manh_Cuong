@@ -29,4 +29,26 @@ public class ProductRepositoryImpl implements ProductRepository {
         BaseRepository.entityManager.persist(product);
         entityTransaction.commit();
     }
+
+    @Override
+    public void update(Integer id, Product product) {
+        product = BaseRepository.entityManager.find(Product.class, id);
+        if (product!=null){
+            EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
+            entityTransaction.begin();
+            BaseRepository.entityManager.persist(product);
+            entityTransaction.commit();
+        }
+    }
+
+    @Override
+    public void remove(Integer id) {
+        Product product = BaseRepository.entityManager.find(Product.class ,id);
+        if (product!=null){
+            EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
+            entityTransaction.begin();
+            BaseRepository.entityManager.remove(product);
+            entityTransaction.commit();
+        }
+    }
 }

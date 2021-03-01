@@ -7,9 +7,8 @@
 <a href="/home">Go Back Home</a>
 <div th:replace="~{common::headerProduct}"></div>
 <div id="form">
-<form action="/create" th:object="${productObj}" method="post">
+<form action=# th:action= "@{/create}" th:object="${productObj}" method="post">
     <p>Name: </p>
-    <!--        <input type="text" th:field="*{name}"  />-->
     <input type="text" th:field="*{name}"  />
     <p>Price: </p>
     <input type="date" th:field="*{price}" />
