@@ -1,12 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.Province;
 
 import java.util.List;
 
 public interface CustomerService {
-    List<Customer> findAll();
-    Customer findById(int id);
+    Iterable<Customer> findAll();
+    Customer findById(Long id);
     void save(Customer customer);
-    void remove(int id);
+    void remove(Long id);
+    Iterable<Customer> findAllByProvince(Province province);
 }

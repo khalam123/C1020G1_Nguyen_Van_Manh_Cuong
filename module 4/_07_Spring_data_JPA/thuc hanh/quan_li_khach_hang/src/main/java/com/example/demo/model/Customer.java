@@ -1,25 +1,35 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstName;
     private String lastName;
 
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "province_id")
+    private Province province;
+
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String lastName) {
+    public Customer(int id, String firstName, String lastName, Province province) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.province = province;
     }
 
     public int getId() {

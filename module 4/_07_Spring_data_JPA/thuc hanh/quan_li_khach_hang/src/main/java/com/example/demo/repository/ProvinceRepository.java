@@ -1,4 +1,7 @@
 package com.example.demo.repository;
 
-public interface ProvinceRepository {
+import com.example.demo.model.Province;
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface ProvinceRepository extends PagingAndSortingRepository<Province,Long> {
 }

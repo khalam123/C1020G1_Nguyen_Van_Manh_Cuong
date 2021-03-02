@@ -1,22 +1,29 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.Province;
 import com.example.demo.service.CustomerService;
-import org.dom4j.rule.Mode;
+import com.example.demo.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private ProvinceService provinceService;
+
+    @ModelAttribute("provinces")
+    public Iterable<Province> provinces(){
+        return provinceService.findAll();
+    }
 
     @GetMapping("/create")
     public ModelAndView showCreateForm(){
@@ -27,7 +34,7 @@ public class CustomerController {
     @PostMapping("/create")
     public ModelAndView save(Customer customer){
         customerService.save(customer);
-        ModelAndView modelAndView = new ModelAndView("/views/create");
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
         modelAndView.addObject("customer",new Customer());
         modelAndView.addObject("message","New customer created");
         return modelAndView;
@@ -35,14 +42,11 @@ public class CustomerController {
 
     @GetMapping("/")
     public ModelAndView list(){
-//        List<Customer> customers = customerService.findAll();
-//        ModelAndView modelAndView = new ModelAndView("/list");
-//        modelAndView.addObject("customer",customers);
         return new ModelAndView("/views/list","customer",customerService.findAll());
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable int id, Model model){
+    public String showEditForm(@PathVariable Long id, Model model){
         Customer customer = customerService.findById(id);
         if (customer!=null){
             model.addAttribute("customer",customer);
@@ -60,7 +64,7 @@ public class CustomerController {
     }
 
     @GetMapping("/delete/{id}")
-    public String showDeleteForm(@PathVariable int id, Model model){
+    public String showDeleteForm(@PathVariable Long id, Model model){
         Customer customer = customerService.findById(id);
         if (customer!=null){
             model.addAttribute("customer",customer);
@@ -71,7 +75,7 @@ public class CustomerController {
     }
     @PostMapping("/delete")
     public String delete(Customer customer){
-        customerService.remove(customer.getId());
+        customerService.remove((long) customer.getId());
         return "redirect:/";
     }
 }
