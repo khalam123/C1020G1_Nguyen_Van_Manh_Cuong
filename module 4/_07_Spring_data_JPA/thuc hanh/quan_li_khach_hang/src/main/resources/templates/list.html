@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<a href="/create">Add new customer</a>
+<h2>Customers</h2>
+<form >
+    Search by first name:
+    <input type="text" name="s"/>
+    <input type="submit" value="Search"/>
+</form>
+<br>
+<form th:action="@{/}" method="post">
+    <table>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Province</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="customers: ${customer}">
+            <td th:text="${customers.firstName}"></td>
+            <td th:text="${customers.lastName}"></td>
+            <td th:text="${customers.province.name}"></td>
+            <td><a th:href="@{/edit/__${customers.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete/__${customers.id}__ }">Delete</a></td>
+        </tr>
+    </table>
+    <div>
+        <a th:href="@{'/'(page=${customer.number - 1})}" th:if="${customer.hasPrevious()}">Previous</a>
+        <span th:text="${customer.number + 1}"></span>/<span th:text="${customer.totalPages}"></span>
+        <a th:href="@{'/'(page=${customer.number + 1})}" th:if="${customer.hasNext()}">Next</a>
+    </div>
+</form>
+</body>
+</html>

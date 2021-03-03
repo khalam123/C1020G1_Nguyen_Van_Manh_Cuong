@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,27 +9,25 @@ import java.util.List;
 public class Province {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "province_id")
-    private Long id;
+    private int id;
     private String name;
 
-    @OneToMany(targetEntity = Customer.class)
+    @OneToMany(mappedBy = "province", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Customer> customers;
 
     public Province() {
     }
 
-    public Province(Long id, String name, List<Customer> customers) {
-        this.id = id;
+    public Province(String name) {
         this.name = name;
-        this.customers = customers;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -38,6 +37,11 @@ public class Province {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Province(int id, List<Customer> customers) {
+        this.id = id;
+        this.customers = customers;
     }
 
     public List<Customer> getCustomers() {

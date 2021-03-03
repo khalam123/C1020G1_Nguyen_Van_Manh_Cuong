@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,26 +12,19 @@ public class Customer {
     private String firstName;
     private String lastName;
 
-    public Province getProvince() {
-        return province;
-    }
-
-    public void setProvince(Province province) {
-        this.province = province;
-    }
-
     @ManyToOne
-    @JoinColumn(name = "province_id")
+    @JoinColumn(name = "province_id",nullable = false)
+    @JsonManagedReference
     private Province province;
+
 
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String lastName, Province province) {
+    public Customer(int id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.province = province;
     }
 
     public int getId() {
@@ -56,12 +51,12 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+    public Province getProvince() {
+        return province;
     }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
+
 }

@@ -1,14 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Customer;
-import com.example.demo.model.Province;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 public interface CustomerService {
-    Iterable<Customer> findAll();
-    Customer findById(Long id);
+    Page<Customer> findAll(Pageable pageable);
+    Customer findById(int id);
     void save(Customer customer);
-    void remove(Long id);
-    Iterable<Customer> findAllByProvince(Province province);
+    void remove(int id);
+    Page<Customer> findAllByFirstNameContaining(String firstname, Pageable pageable);
+
 }

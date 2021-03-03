@@ -5,9 +5,9 @@ import com.example.demo.model.Province;
 public interface ProvinceService {
     Iterable<Province> findAll();
 
-    Province findById(Long id);
+    Province findById(int id);
 
     void save(Province province);
 
-    void remove(Long id);
+    void remove(int id);
 }

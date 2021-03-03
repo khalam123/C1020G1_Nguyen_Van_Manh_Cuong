@@ -8,27 +8,25 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProvinceServiceImpl implements ProvinceService {
-
     @Autowired
     private ProvinceRepository provinceRepository;
-
     @Override
     public Iterable<Province> findAll() {
         return provinceRepository.findAll();
     }
 
     @Override
-    public Province findById(Long id) {
+    public Province findById(int id) {
         return provinceRepository.findById(id).orElse(null);
     }
 
     @Override
     public void save(Province province) {
-        provinceRepository.save(province);
+provinceRepository.save(province);
     }
 
     @Override
-    public void remove(Long id) {
-        provinceRepository.delete(provinceRepository.findById(id).orElse(null));
+    public void remove(int id) {
+provinceRepository.deleteById(id);
     }
 }
