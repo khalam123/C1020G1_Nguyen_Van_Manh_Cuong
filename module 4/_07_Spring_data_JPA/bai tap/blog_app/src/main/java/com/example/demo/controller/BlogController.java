@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Controller
@@ -29,6 +30,7 @@ public class BlogController {
     }
     @PostMapping("/create")
     public ModelAndView save(Blog blog){
+        blog.setDateCreate(LocalDate.now());
         blogService.save(blog);
         ModelAndView modelAndView = new ModelAndView("redirect:/");
         modelAndView.addObject("blog",new Blog());
@@ -37,12 +39,12 @@ public class BlogController {
     }
 
     @GetMapping("/")
-    public String list(@RequestParam("s") Optional<String> s, Model model, @PageableDefault(size = 5) Pageable pageable){
+    public String list(@RequestParam("s") Optional<String> s, Model model, @PageableDefault(size = 5, sort = "dateCreate") Pageable pageable){
         if (s.isPresent()){
             model.addAttribute("blog", blogService.findAllTextContaining(s.get(),pageable));
         }else{
             model.addAttribute("blog",blogService.findAll(pageable));
-            model.addAttribute("categories",categoryService.findAll());
+//            model.addAttribute("categories",categoryService.findAll());
         }
         return "/views/list";
     }

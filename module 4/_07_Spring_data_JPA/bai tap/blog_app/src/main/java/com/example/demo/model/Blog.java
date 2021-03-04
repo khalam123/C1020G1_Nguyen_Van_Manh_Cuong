@@ -3,6 +3,8 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Blog {
@@ -10,6 +12,8 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String text;
+    @Column(columnDefinition = "date",name = "date_create")
+    private LocalDate dateCreate;
 
     @ManyToOne
     @JoinColumn(name = "category_id",nullable = false)
@@ -19,9 +23,11 @@ public class Blog {
     public Blog() {
     }
 
-    public Blog(int id, String text) {
+    public Blog(int id, String text, LocalDate dateCreate, Category category) {
         this.id = id;
         this.text = text;
+        this.dateCreate = dateCreate;
+        this.category = category;
     }
 
     public int getId() {
@@ -38,6 +44,14 @@ public class Blog {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public LocalDate getDateCreate() {
+        return dateCreate;
+    }
+
+    public void setDateCreate(LocalDate dateCreate) {
+        this.dateCreate = dateCreate;
     }
 
     public Category getCategory() {

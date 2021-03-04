@@ -19,13 +19,16 @@ Search by first text:
         <th>Id</th>
         <th>Content</th>
         <th>Category</th>
+        <th>Time</th>
         <th>Edit</th>
         <th>Delete</th>
+
     </tr>
     <tr th:each="blogs: ${blog}">
         <td th:text="${blogs.id}"></td>
         <td th:text="${blogs.text}"></td>
         <td th:text="${blogs.category.name}"></td>
+        <td th:text="${blogs.dateCreate}"></td>
         <td><a th:href="@{/edit/__${blogs.id}__ }">Edit</a></td>
         <td><a th:href="@{/delete/__${blogs.id}__ }">Delete</a></td>
     </tr>
