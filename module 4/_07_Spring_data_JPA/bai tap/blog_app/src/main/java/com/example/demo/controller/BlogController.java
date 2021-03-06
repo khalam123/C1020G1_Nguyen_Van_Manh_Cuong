@@ -44,7 +44,6 @@ public class BlogController {
             model.addAttribute("blog", blogService.findAllTextContaining(s.get(),pageable));
         }else{
             model.addAttribute("blog",blogService.findAll(pageable));
-//            model.addAttribute("categories",categoryService.findAll());
         }
         return "/views/list";
     }

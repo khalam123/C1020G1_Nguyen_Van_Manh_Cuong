@@ -8,15 +8,6 @@ import java.util.Arrays;
 
 @Aspect
 public class Logger {
-    public void error() {
-        System.out.println("[CMS] ERROR!");
-    }
-
-    @AfterThrowing(pointcut = "execution(public * com.example.demo.service.CustomerService.findAll(..))")
-    public void log() {
-    }
-
-//    @AfterThrowing(pointcut = "execution(public * com.example.demo.service.CustomerService.*(..))")
 
     @AfterThrowing(pointcut = "execution(public * com.example.demo.service.*.*(..))", throwing = "e")
     public void log(JoinPoint joinPoint, Exception e) {
