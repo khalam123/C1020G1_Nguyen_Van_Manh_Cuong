@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import java.util.Arrays;
 
 public class LogBook {
+    public static String name;
     @AfterThrowing(pointcut = "execution(public * com.example.demo.service.BookService.*(..))", throwing = "e")
     public void logError(JoinPoint joinPoint, Exception e) {
         String className = joinPoint.getClass().getSimpleName();

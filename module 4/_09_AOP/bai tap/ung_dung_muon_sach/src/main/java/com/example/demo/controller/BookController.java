@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.config.LogBook;
 import com.example.demo.model.Book;
 import com.example.demo.service.BookService;
 import com.example.demo.service.BookLendNumberService;
@@ -39,19 +40,20 @@ public class BookController {
         return "redirect:/";
     }
 
-//    @GetMapping("/view/{id}")
-//    public ModelAndView viewBook(ModelAndView modelAndView, @PathVariable int id){
-//        return new ModelAndView("/view","book",bookService.findById(id));
-//    }
-    @GetMapping("/view")
-    public String viewBlog(@RequestParam Integer id, Model model) {
-        model.addAttribute("book", bookService.findById(id));
-        return "view";
+    @GetMapping("/view/{id}")
+    public ModelAndView viewBook(ModelAndView modelAndView, @PathVariable int id){
+        return new ModelAndView("/view","book",bookService.findById(id));
     }
+//    @GetMapping("/view")
+//    public String viewBlog(@RequestParam Integer id, Model model) {
+//        model.addAttribute("book", bookService.findById(id));
+//        return "view";
+//    }
 
     @GetMapping("/borrow")
     public String borrow(@RequestParam Integer id, RedirectAttributes redirectAttributes) throws Exception {
         redirectAttributes.addFlashAttribute("message", "Borrow Complete ! your book number is " + bookService.borrow(id));
+        LogBook.name = bookService.findById(id).getName();
         return "redirect:/";
     }
 
