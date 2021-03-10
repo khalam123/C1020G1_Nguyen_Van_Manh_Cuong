@@ -10,9 +10,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +22,6 @@ public class Blog {
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     @JsonManagedReference
-    @JsonBackReference
     private Category category;
 
     public Blog() {

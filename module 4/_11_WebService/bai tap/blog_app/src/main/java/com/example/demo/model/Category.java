@@ -14,7 +14,6 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
-    @JsonManagedReference
     @JsonBackReference
     private List<Blog> blogs;
 
