@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ public class Category {
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     @JsonManagedReference
+    @JsonBackReference
     private List<Blog> blogs;
 
     public Category() {

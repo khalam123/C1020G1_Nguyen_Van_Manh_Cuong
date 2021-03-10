@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 
 @Service
 public class BlogServiceImpl implements BlogService {
@@ -18,6 +20,12 @@ public class BlogServiceImpl implements BlogService {
     public Page<Blog> findAll(Pageable pageable){
         return blogRepository.findAll(pageable);
     }
+
+    @Override
+    public List<Blog> findAll() {
+        return blogRepository.findAll();
+    }
+
     @Override
     public Blog findById(int id) {
         return blogRepository.findById(id).orElse(null);
