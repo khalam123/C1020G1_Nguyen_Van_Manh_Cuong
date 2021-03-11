@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail category</title>
+</head>
+<body>
+<h1>Category Detail</h1>
+
+<p>
+    <a href="/category">category list</a>
+</p>
+<form th:action="@{/view-category}" th:object="${categories}" method="get">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <th> Id:</th>
+            <th th:text="${categories.id}"></th>
+        </tr>
+        <tr>
+            <th> Name:</th>
+            <th th:text="${categories.name}"></th>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>

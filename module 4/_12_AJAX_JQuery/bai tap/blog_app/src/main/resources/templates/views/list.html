@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<a href="/create">Add new blog</a>
+<h2>Blog</h2>
+
+
+Search by first text:
+<input type="text" name="text" id="text"/>
+<input type="button" value="Search" id="search"/>
+
+<br>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Content</th>
+        <th>Category</th>
+<!--        <th>Time</th>-->
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+    <tbody id="data">
+    <tr th:each="blogs: ${blog}">
+        <td th:text="${blogs.id}"></td>
+        <td th:text="${blogs.text}"></td>
+        <td th:text="${blogs.category.name}"></td>
+<!--        <td th:text="${blogs.dateCreate}"></td>-->
+        <td><a th:href="@{/edit/__${blogs.id}__ }">Edit</a></td>
+        <td><a th:href="@{/delete/__${blogs.id}__ }">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<!--<div>-->
+<!--    <a th:href="@{'/'(page=${blog.number - 1})}" th:if="${blog.hasPrevious()}">Previous</a>-->
+<!--    <span th:text="${blog.number + 1}"></span>/<span th:text="${blog.totalPages}"></span>-->
+<!--    <a th:href="@{'/'(page=${blog.number + 1})}" th:if="${blog.hasNext()}">Next</a>-->
+<!--</div>-->
+<button id="btn">More >></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // let page =0 ;
+        $("#search").click(function () {
+            console.log("abc");
+            // page++;
+            // input = $("#text").val();
+            let input = document.getElementById("text").value;
+            console.log(input);
+            let data = "text=" + input;
+
+            $.ajax({
+                type: "GET",
+                url: "/search?" + data,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    let str = "";
+                    for (let i of data){
+                        str += "<tr> " +
+                            "<td>"+i.id+"</td>\n" +
+                            "<td>"+i.text+
+                            "</td>\n"+
+                            "<td>"+i.category.name+"</td>"+
+                            "<td><a href='/edit/" + i.id+ "'>Edit</a></td>\n" +
+                            "<td><a href='/delete/" + i.id+ "'>Delete</a></td>\n"
+                            + "</tr>";}
+
+                    $("#data").html(str);
+                }
+            })
+         });
+    })
+
+    $(document).ready(function () {
+        let page = 0;
+        $("#btn").click(function () {
+            page++;
+            input = $("#btn").val();
+            console.log(input);
+            let data = "text= " + input;
+
+            $.ajax({
+                type: "GET",
+                url: "/list",
+                data: {"page": page},
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    let result = "";
+                    for (let i of data.content){
+                        result += "<tr>" +
+                            "<td>"+i.id+"</td>\n" +
+                            "<td>"+i.text+ "</td>\n" +
+                            "<td>"+i.category.name+"</td>"+
+                            "<td><a href='/edit/" + i.id+ "'>Edit</a></td>\n" +
+                            "<td><a href='/delete/" + i.id+ "'>Delete</a></td>\n" +
+                            // "<td><a href=\"@{/delete/__${blogs.id}__ }\">Delete</a></td>"
+                            "</tr>";}
+                    $("#data").append(result);
+                }
+            })
+        });
+    })
+
+
+</script>
+</body>
+</html>
