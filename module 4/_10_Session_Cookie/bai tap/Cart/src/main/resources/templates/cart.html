@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<h3>Cart Product</h3>
+<a href="/">Back to list Product</a>
+<br><br>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="row,rowStat: ${carts}">
+        <td th:text="${row.id}"></td>
+        <td th:text="${row.name}"></td>
+        <td th:text="${row.price}"></td>
+        <td> <a th:href="@{/cart-delete/{id}/(id=${row.getId()})}">Delete</a></td>
+    </tr>
+</table>
+<br>
+<a href="/cart-delete-all/" >Delete All</a>
+</body>
+</html>
