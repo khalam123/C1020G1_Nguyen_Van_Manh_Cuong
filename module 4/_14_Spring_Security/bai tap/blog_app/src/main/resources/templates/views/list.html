@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>List</title>
 </head>
 <body>
+<th th:include="/views/menu "></th>
 <a href="/create">Add new blog</a>
 <h2>Blog</h2>
 
@@ -13,15 +14,17 @@ Search by first text:
 <input type="text" name="text" id="text"/>
 <input type="button" value="Search" id="search"/>
 
-<br>
+<br><br>
 <table border="1">
     <tr>
         <th>Id</th>
         <th>Content</th>
         <th>Category</th>
-<!--        <th>Time</th>-->
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>View</th>
+        <div sec:authorize="isAuthenticated()">
+            <th>Edit</th>
+            <th>Delete</th>
+        </div>
 
     </tr>
     <tbody id="data">
@@ -30,8 +33,12 @@ Search by first text:
         <td th:text="${blogs.text}"></td>
         <td th:text="${blogs.category.name}"></td>
 <!--        <td th:text="${blogs.dateCreate}"></td>-->
-        <td><a th:href="@{/edit/__${blogs.id}__ }">Edit</a></td>
-        <td><a th:href="@{/delete/__${blogs.id}__ }">Delete</a></td>
+        <td><a th:href="@{/view/__${blogs.id}__ }">View</a></td>
+        <div sec:authorize="isAuthenticated()">
+            <td id="author"><a th:href="@{/edit/__${blogs.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete/__${blogs.id}__ }">Delete</a></td>
+        </div>
+
     </tr>
     </tbody>
 </table>
@@ -62,6 +69,7 @@ Search by first text:
                 url: "/search?" + data,
                 dataType: "json",
                 success: function (data) {
+                    // let isAuthor = $.('#author').html();
                     console.log(data);
                     let str = "";
                     for (let i of data){
@@ -70,6 +78,7 @@ Search by first text:
                             "<td>"+i.text+
                             "</td>\n"+
                             "<td>"+i.category.name+"</td>"+
+                            "<td><a href='/view/" + i.id+ "'>View</a></td>\n" +
                             "<td><a href='/edit/" + i.id+ "'>Edit</a></td>\n" +
                             "<td><a href='/delete/" + i.id+ "'>Delete</a></td>\n"
                             + "</tr>";}
@@ -87,13 +96,14 @@ Search by first text:
             input = $("#btn").val();
             console.log(input);
             let data = "text= " + input;
-
+            let listBlog = null;
             $.ajax({
                 type: "GET",
                 url: "/list",
                 data: {"page": page},
                 dataType: "json",
                 success: function (data) {
+                    listBlog = data;
                     console.log(data);
                     let result = "";
                     for (let i of data.content){
@@ -101,9 +111,9 @@ Search by first text:
                             "<td>"+i.id+"</td>\n" +
                             "<td>"+i.text+ "</td>\n" +
                             "<td>"+i.category.name+"</td>"+
-                            "<td><a href='/edit/" + i.id+ "'>Edit</a></td>\n" +
-                            "<td><a href='/delete/" + i.id+ "'>Delete</a></td>\n" +
-                            // "<td><a href=\"@{/delete/__${blogs.id}__ }\">Delete</a></td>"
+                            "<td><a href='/view/" + i.id+ "'>View</a></td>\n" +
+                            "<div sec:authorize='isAuthenticated()'>"+"<td><a href='/edit/" + i.id+ "'>Edit</a></td>\n" +
+                            "<td><a href='/delete/" + i.id+ "'>Delete</a></td>\n" +"</div>"+
                             "</tr>";}
                     $("#data").append(result);
                 }
