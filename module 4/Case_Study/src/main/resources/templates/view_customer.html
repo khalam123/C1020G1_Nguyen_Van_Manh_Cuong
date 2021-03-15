@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer View</title>
+<!--    <link rel="stylesheet" th:href="@{../static/css/bootstrap.min.css}">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<h3>Customer Detail</h3>
+<table>
+    <tr>
+        <th>ID: </th>
+        <td th:text="${customers.id}"></td>
+    </tr>
+    <tr>
+        <th>Name: </th>
+        <td th:text="${customers.name}"></td>
+    </tr>
+    <tr>
+        <th>Birthday: </th>
+        <td th:text="${customers.birthday}"></td>
+    </tr>
+    <tr>
+        <th>Gender: </th>
+        <td th:text="${customers.gender}"></td>
+    </tr>
+    <tr>
+        <th>ID_Card: </th>
+        <td th:text="${customers.id_card}"></td>
+    </tr>
+    <tr>
+        <th>Phone: </th>
+        <td th:text="${customers.phone}"></td>
+    </tr>
+    <tr>
+        <th>Email: </th>
+        <td th:text="${customers.email}"></td>
+    </tr>
+    <tr>
+        <th>Address: </th>
+        <td th:text="${customers.address}"></td>
+    </tr>
+    <tr>
+        <th>Type: </th>
+        <td th:text="${customers.customerType.customerType_name}"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<button><a th:href="@{/edit_customer/__${customers.id}__ }">Edit</a></button>
+<button data-toggle="modal" data-target="#exampleModal" >Delete</button>
+<!--<button><a th:href="@{/delete_customer/__${customers.id}__ }">Delete</a></button>-->
+<!--    &lt;%&ndash;<button type="button" class="btn btn-primary">&ndash;%&gt;-->
+<!--    &lt;%&ndash;    Launch demo modal&ndash;%&gt;-->
+<!--    &lt;%&ndash;</button>&ndash;%&gt;-->
+<!--<%&#45;&#45;&lt;!&ndash; Modal &ndash;&gt;&#45;&#45;%>-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                        <div class="modal-body">
+                                Are you sure DELETE this ??????
+                            </div>
+                        <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="submitForm()" >Delete</button>
+                        </div>
+                </div>
+        </div>
+</div>
+<form th:action="@{/delete_customer}" th:object="${customers}" method="get" id="formDelete">
+    <input type="hidden" id="input" name="delete_modal">
+    </form>
+<script>
+    function setValue(id) {
+        document.getElementById("input").value = id;
+    }
+    function submitForm() {
+        document.getElementById("formDelete").submit();
+    }
+</script>
+
+<!--<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>-->
+<!--<script th:src="@{../static/js/jquery-3.5.1.min.js}"></script>-->
+<!--<script th:src="@{../static/js/bootstrap.min.js}"></script>-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<!--<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>-->
+</body>
+</html>

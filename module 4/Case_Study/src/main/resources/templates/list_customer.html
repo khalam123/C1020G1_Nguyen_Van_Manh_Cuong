@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+</head>
+<body>
+<a th:href="@{/create_customer}">Create new Customer</a>
+<h2>Customer</h2>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Type</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="customer: ${customers}">
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.gender}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.customerType.customerType_name}"></td>
+        <td><a th:href="@{/view_customer/__${customer.id}__ }">View</a></td>
+
+    </tr>
+</table>
+</body>
+</html>
