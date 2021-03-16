@@ -5,6 +5,8 @@ import case_study.model.CustomerType;
 import case_study.service.CustomerService;
 import case_study.service.CustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +22,10 @@ public class CustomerController {
     private CustomerTypeService customerTypeService;
 
     @GetMapping("/customer")
-    public String listCustomer(Model model){
-        model.addAttribute("customers",customerService.findAll());
+    public String listCustomer(Model model, @PageableDefault(size = 5) Pageable pageable){
+        model.addAttribute("customers",customerService.findAll(pageable));
+//        model.addAttribute("customers",customerService.findAll());
+
         return "list_customer";
     }
 
@@ -64,8 +68,8 @@ public class CustomerController {
         return "redirect:/customer";
     }
 
-    @GetMapping("/delete_customer")
-    public String deleteCustomer(@RequestParam Integer id){
+    @PostMapping("/delete_customer")
+    public String deleteCustomer(@RequestParam("delete_modal") int id){
         customerService.remove(id);
         return "redirect:/customer";
     }

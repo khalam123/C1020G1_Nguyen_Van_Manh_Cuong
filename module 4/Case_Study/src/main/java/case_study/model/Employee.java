@@ -1,9 +1,9 @@
 package case_study.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
@@ -20,10 +20,26 @@ public class Employee {
     private String email;
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "position_id",referencedColumnName = "id")
+    @JsonManagedReference
+    private Position position;
+
+    @ManyToOne
+    @JoinColumn(name = "division_id",referencedColumnName = "id")
+    @JsonManagedReference
+    private Division division;
+
+    @ManyToOne
+    @JoinColumn(name = "education_degree_id",referencedColumnName = "id")
+    @JsonBackReference
+    private EducationDegree educationDegree;
+
     public Employee() {
     }
 
-    public Employee(Integer id, String name, String birthday, String id_card, String salary, String phone, @Email String email, String address) {
+    public Employee(Integer id, String name, String birthday, String id_card, String salary, String phone,
+                    @Email String email, String address, Position position, Division division, EducationDegree educationDegree) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -32,6 +48,9 @@ public class Employee {
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.position = position;
+        this.division = division;
+        this.educationDegree = educationDegree;
     }
 
     public Integer getId() {
@@ -96,5 +115,29 @@ public class Employee {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Division getDivision() {
+        return division;
+    }
+
+    public void setDivision(Division division) {
+        this.division = division;
+    }
+
+    public EducationDegree getEducationDegree() {
+        return educationDegree;
+    }
+
+    public void setEducationDegree(EducationDegree educationDegree) {
+        this.educationDegree = educationDegree;
     }
 }

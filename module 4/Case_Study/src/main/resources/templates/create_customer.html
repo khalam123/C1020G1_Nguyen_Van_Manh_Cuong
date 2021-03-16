@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
+<head th:replace="~{common/layout::header}">
     <meta charset="UTF-8">
     <title>Create Customer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
-<a href="list_customer">Back to List Customer</a>
+<a th:href="@{/customer}">Back to List Customer</a>
 <h3>Create Customer</h3>
 <form th:action="@{/create_customer}" th:object="${customers}" method="post">
     <table>
@@ -14,45 +16,46 @@
             <td><input type="text" hidden th:field="*{id}"/></td>
         </tr>
         <tr>
-            <th>Name: </th>
+            <th>Name:</th>
             <td><input type="text" th:field="*{name}"></td>
         </tr>
         <tr>
-            <th>Birthday: </th>
+            <th>Birthday:</th>
             <td><input type="date" th:field="*{birthday}"></td>
         </tr>
         <tr>
-            <th>Gender: </th>
+            <th>Gender:</th>
             <td>
-                <input type="radio" id="male" name="gender" th:value="male" th:field="*{gender}">
+                <input type="radio" id="male" name="gender" th:value="Male" th:field="*{gender}">
                 <label for="male">Male</label><br>
-                <input type="radio" id="female" name="gender" th:value="female" th:field="*{gender}">
+                <input type="radio" id="female" name="gender" th:value="Female" th:field="*{gender}">
                 <label for="male">Female</label><br>
-                <input type="radio" id="other" name="gender" th:value="other" th:field="*{gender}">
+                <input type="radio" id="other" name="gender" th:value="Other" th:field="*{gender}">
                 <label for="male">Other</label>
             </td>
         </tr>
         <tr>
-            <th>ID_Card: </th>
+            <th>ID_Card:</th>
             <td><input type="text" th:field="*{id_card}"></td>
         </tr>
         <tr>
-            <th>Phone: </th>
+            <th>Phone:</th>
             <td><input type="text" th:field="*{phone}"></td>
         </tr>
         <tr>
-            <th>Email: </th>
+            <th>Email:</th>
             <td><input type="text" th:field="*{email}"></td>
         </tr>
         <tr>
-            <th>Address: </th>
+            <th>Address:</th>
             <td><input type="text" th:field="*{address}"></td>
         </tr>
         <tr>
-            <th>Type: </th>
+            <th>Type:</th>
             <td>
                 <select th:field="*{customerType}">
-                    <option th:each="customerType :${customerType}" th:value="${customerType.customerType_id}" th:text="${customerType.customerType_name}"></option>
+                    <option th:each="customerType :${customerType}" th:value="${customerType.customerType_id}"
+                            th:text="${customerType.customerType_name}"></option>
                 </select>
             </td>
         </tr>
