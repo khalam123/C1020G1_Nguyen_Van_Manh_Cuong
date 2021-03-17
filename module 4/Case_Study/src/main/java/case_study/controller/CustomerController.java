@@ -1,9 +1,8 @@
 package case_study.controller;
 
-import case_study.model.Customer;
-import case_study.model.CustomerType;
-import case_study.service.CustomerService;
-import case_study.service.CustomerTypeService;
+import case_study.model.customer.Customer;
+import case_study.service.customer.CustomerService;
+import case_study.service.customer.CustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;

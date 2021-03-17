@@ -1,8 +1,8 @@
 package case_study.controller;
 
-import case_study.model.ServiceResort;
-import case_study.service.RentTypeService;
-import case_study.service.ServiceResortService;
+import case_study.model.service.ServiceResort;
+import case_study.service.service.RentTypeService;
+import case_study.service.service.ServiceResortService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

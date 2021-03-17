@@ -9,13 +9,14 @@
 </head>
 <body>
 <div th:replace="~{common/layout::navbar}"></div>
-<div class="row">
-    <div class="col-sm-2">
-        <a th:href="@{/customer}">Back to List Customer</a>
-    </div>
-    <div class="col-sm-10" style="border-left: black solid">
-        <h3 style="text-align: center">Create Customer</h3>
-        <form th:action="@{/create_customer}" th:object="${customers}" method="post" style="text-align: center">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <a th:href="@{/customer}">Back to List Customer</a>
+        </div>
+        <div class="col-sm-10" style="border-left: black solid">
+            <h3 style="text-align: center">Create Customer</h3>
+            <form th:action="@{/create_customer}" th:object="${customers}" method="post" style="text-align: center">
                 <table>
 
                     <tr>
@@ -59,10 +60,10 @@
                     <tr>
                         <th>Type:</th>
                         <td>
-                            <select th:field="*{customerType}">
-                                <option th:each="customerType :${customerType}"
-                                        th:value="${customerType.customerType_id}"
-                                        th:text="${customerType.customerType_name}"></option>
+                            <select class="form-control" th:field="*{customerType}">
+                                <option th:each="customerTypes :${customerType}"
+                                        th:value="${customerTypes.customerType_id}"
+                                        th:text="${customerTypes.customerType_name}"></option>
                             </select>
                         </td>
                     </tr>
@@ -71,9 +72,9 @@
                         <td><input class="btn btn-outline-info" type="submit" value="Create Customer"></td>
                     </tr>
                 </table>
-        </form>
+            </form>
+        </div>
     </div>
-
 </div>
 <footer th:replace="~{common/layout::footer}"></footer>
 

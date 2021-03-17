@@ -1,11 +1,10 @@
 package case_study.controller;
 
-import case_study.model.Customer;
-import case_study.model.Employee;
-import case_study.service.DivisionService;
-import case_study.service.EducationDegreeService;
-import case_study.service.EmployeeService;
-import case_study.service.PositionService;
+import case_study.model.employee.Employee;
+import case_study.service.employee.DivisionService;
+import case_study.service.employee.EducationDegreeService;
+import case_study.service.employee.EmployeeService;
+import case_study.service.employee.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;

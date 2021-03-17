@@ -8,144 +8,97 @@
 </head>
 <body>
 <div th:replace="~{common/layout::navbar}"></div>
-<div class="row">
-    <div class="col-sm-2">
-        <ul style="list-style-type: none">
 
-            <li><a th:href="@{/create_customer}">Create Customer</a></li>
-            <li><a th:href="@{/customer}">Back to List Customer</a></li>
-        </ul>
-    </div>
-    <div class="col-sm-10" style="border-left: black solid">
-        <h3 style="text-align: center">Update Customer</h3>
-        <form th:action="@{/edit_customer}" th:object="${customers}" method="post" >
-            <fieldset style="background: lightgray">
-                <input th:type="hidden" name="id" th:field="*{id}">
-                <div class="form-row">
-                    <div class="form-group col-md-3"></div>
-                    <div class="form-group col-md-3">
-                        <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Name" th:field="*{name}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label>Birthday</label>
-                        <input type="date" class="form-control" placeholder="Birthday" th:field="*{birthday}">
-                    </div>
-                    <div class="form-group col-md-3"></div>
-                </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <ul style="list-style-type: none">
 
-                <div class="form-row">
-                    <div class="form-group col-md-3"></div>
-                    <div class="form-group col-md-3">
-                        <label>Gender</label><br>
-                        <input type="radio" id="male" name="gender" th:value="Male" th:field="*{gender}">
-                        <label for="male">Male</label><br>
-                        <input type="radio" id="female" name="gender" th:value="Female" th:field="*{gender}">
-                        <label for="female">Female</label><br>
-                        <input type="radio" id="other" name="gender" th:value="Other" th:field="*{gender}">
-                        <label for="other">Other</label>
+                <li><a th:href="@{/create_customer}">Create Customer</a></li>
+                <li><a th:href="@{/customer}">Back to List Customer</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-10" style="border-left: black solid">
+            <h3 style="text-align: center">Update Customer</h3>
+            <form th:action="@{/edit_customer}" th:object="${customers}" method="post">
+                <fieldset style="background: lightgray">
+                    <input th:type="hidden" name="id" th:field="*{id}">
+                    <div class="form-row">
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-3">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="Name" th:field="*{name}">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Birthday</label>
+                            <input type="date" class="form-control" placeholder="Birthday" th:field="*{birthday}">
+                        </div>
+                        <div class="form-group col-md-3"></div>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label>Customer Type</label>
-                        <select class="form-control" th:field="*{customerType}">
-                            <option th:each="customerType :${customerType}" th:value="${customerType.customerType_id}"
-                                    th:text="${customerType.customerType_name}"></option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3"></div>
-                </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-3"></div>
-                    <div class="form-group col-md-3">
-                        <label>Phone</label>
-                        <input type="text" class="form-control" placeholder="Phone number" th:field="*{phone}">
+                    <div class="form-row">
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-3">
+                            <label>Gender</label><br>
+                            <input type="radio" id="male" name="gender" th:value="Male" th:field="*{gender}">
+                            <label for="male">Male</label><br>
+                            <input type="radio" id="female" name="gender" th:value="Female" th:field="*{gender}">
+                            <label for="female">Female</label><br>
+                            <input type="radio" id="other" name="gender" th:value="Other" th:field="*{gender}">
+                            <label for="other">Other</label>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Customer Type</label>
+                            <select class="form-control" th:field="*{customerType}">
+                                <option th:each="customerType :${customerType}"
+                                        th:value="${customerType.customerType_id}"
+                                        th:text="${customerType.customerType_name}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3"></div>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label>ID-Card</label>
-                        <input type="text" class="form-control" placeholder="ID-Card" th:field="*{id_card}">
-                    </div>
-                    <div class="form-group col-md-3"></div>
-                </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-3"></div>
-                    <div class="form-group col-md-6">
-                        <label>E-mail</label>
-                        <input type="text" class="form-control" placeholder="E-mail" th:field="*{email}">
+                    <div class="form-row">
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-3">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" placeholder="Phone number" th:field="*{phone}">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>ID-Card</label>
+                            <input type="text" class="form-control" placeholder="ID-Card" th:field="*{id_card}">
+                        </div>
+                        <div class="form-group col-md-3"></div>
                     </div>
-                    <div class="form-group col-md-3"></div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3"></div>
-                    <div class="form-group col-md-6">
-                        <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Address" th:field="*{address}">
-                    </div>
-                    <div class="form-group col-md-3"></div>
-                </div>
 
-                <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-row">
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-6">
+                            <label>E-mail</label>
+                            <input type="text" class="form-control" placeholder="E-mail" th:field="*{email}">
+                        </div>
+                        <div class="form-group col-md-3"></div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <input class="btn btn-primary" type="submit" value="Update">
-                        <a class="btn btn-secondary" th:href="@{/view_customer/__${id}__ }" role="button">Back</a>
+                    <div class="form-row">
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-6">
+                            <label>Address</label>
+                            <input type="text" class="form-control" placeholder="Address" th:field="*{address}">
+                        </div>
+                        <div class="form-group col-md-3"></div>
                     </div>
-                </div>
-                <!--            <table>-->
-                <!--                <tr>-->
-                <!--                    <td><b>Name:</b></td>-->
-                <!--                    <td><input type="text" th:field="*{name}"/></td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td><b>Birthday: </b></td>-->
-                <!--                    <td><input type="date" th:field="*{birthday}"></td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td><b>Gender: </b></td>-->
-                <!--                    <td>-->
-                <!--                        <input type="radio" id="male" name="gender" th:value="Male" th:field="*{gender}">-->
-                <!--                        <label for="male">Male</label><br>-->
-                <!--                        <input type="radio" id="female" name="gender" th:value="Female" th:field="*{gender}">-->
-                <!--                        <label for="female">Female</label><br>-->
-                <!--                        <input type="radio" id="other" name="gender" th:value="Other" th:field="*{gender}">-->
-                <!--                        <label for="other">Other</label>-->
-                <!--                    </td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td><b>ID_Card: </b></td>-->
-                <!--                    <td><input type="text" th:field="*{id_card}"></td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td><b>Phone: </b></td>-->
-                <!--                    <td><input type="text" th:field="*{phone}"></td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td><b>Email: </b></td>-->
-                <!--                    <td><input type="text" th:field="*{email}"></td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td><b>Address: </b></td>-->
-                <!--                    <td><input type="text" th:field="*{address}"></td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td><b>Type: </b></td>-->
-                <!--                    <td>-->
-                <!--                        <select th:field="*{customerType}">-->
-                <!--                            <option th:each="customerType :${customerType}" th:value="${customerType.customerType_id}"-->
-                <!--                                    th:text="${customerType.customerType_name}"></option>-->
-                <!--                        </select>-->
-                <!--                    </td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td></td>-->
-                <!--                    <td><input class="btn btn-primary" type="submit" value="Update"></td>-->
-                <!--                    <td><a class="btn btn-secondary" th:href="@{/view_customer/__${id}__ }" role="button">Back</a></td>-->
-                <!--                </tr>-->
-                <!--            </table>-->
-            </fieldset>
-        </form>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input class="btn btn-primary" type="submit" value="Update">
+                            <a class="btn btn-secondary" th:href="@{/view_customer/__${id}__ }" role="button">Back</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

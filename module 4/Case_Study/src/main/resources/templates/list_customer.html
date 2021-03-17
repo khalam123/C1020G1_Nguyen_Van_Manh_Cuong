@@ -9,36 +9,39 @@
 </head>
 <body>
 <div th:replace="~{common/layout::navbar}"></div>
-<div class="row">
-    <div class="col-sm-2">
-        <a th:href="@{/create_customer}">Create new Customer</a>
-    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <a th:href="@{/create_customer}">Create new Customer</a>
+        </div>
 
 
-    <div class="col-sm-10" style="border-left: black solid">
-        <h2 style="text-align: center">Customer</h2>
-        <table class="table">
-            <tr class="table-warning">
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Type</th>
-                <th>Action</th>
-            </tr>
-            <tr th:each="customer: ${customers}" class="table-secondary">
-                <td th:text="${customer.name}"></td>
-                <td th:text="${customer.gender}"></td>
-                <td th:text="${customer.email}"></td>
-                <td th:text="${customer.customerType.customerType_name}"></td>
-                <td><a th:href="@{/view_customer/__${customer.id}__ }">View</a></td>
+        <div class="col-sm-10" style="border-left: black solid">
+            <h2 style="text-align: center">Customer</h2>
+            <table class="table">
+                <tr class="table-warning">
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="customer: ${customers}" class="table-secondary">
+                    <td th:text="${customer.name}"></td>
+                    <td th:text="${customer.gender}"></td>
+                    <td th:text="${customer.email}"></td>
+                    <td th:text="${customer.customerType.customerType_name}"></td>
+                    <td><a th:href="@{/view_customer/__${customer.id}__ }">View</a></td>
 
-            </tr>
-        </table>
+                </tr>
+            </table>
 
-        <div>
-            <a th:href="@{'/customer'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
-            <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
-            <a th:href="@{'/customer'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+            <div>
+                <a th:href="@{'/customer'(page=${customers.number - 1})}"
+                   th:if="${customers.hasPrevious()}">Previous</a>
+                <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
+                <a th:href="@{'/customer'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+            </div>
         </div>
     </div>
 </div>
