@@ -3,9 +3,11 @@ package case_study.model.contract;
 import case_study.model.customer.Customer;
 import case_study.model.employee.Employee;
 import case_study.model.service.ServiceResort;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Contract {
@@ -14,8 +16,8 @@ public class Contract {
     private Integer id;
     private String startDate;
     private String endDate;
-    private double deposit;
-    private double totalMoney;
+    private Double deposit;
+    private Double totalMoney;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
@@ -32,19 +34,11 @@ public class Contract {
     @JsonManagedReference
     private ServiceResort serviceResort;
 
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
+    List<ContractDetail> contractDetails;
+
 
     public Contract() {
-    }
-
-    public Contract(Integer id, String startDate, String endDate, double deposit, double totalMoney, Customer customer, Employee employee, ServiceResort serviceResort) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.deposit = deposit;
-        this.totalMoney = totalMoney;
-        this.customer = customer;
-        this.employee = employee;
-        this.serviceResort = serviceResort;
     }
 
     public Integer getId() {
@@ -71,19 +65,19 @@ public class Contract {
         this.endDate = endDate;
     }
 
-    public double getDeposit() {
+    public Double getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(double deposit) {
+    public void setDeposit(Double deposit) {
         this.deposit = deposit;
     }
 
-    public double getTotalMoney() {
+    public Double getTotalMoney() {
         return totalMoney;
     }
 
-    public void setTotalMoney(double totalMoney) {
+    public void setTotalMoney(Double totalMoney) {
         this.totalMoney = totalMoney;
     }
 
@@ -109,5 +103,25 @@ public class Contract {
 
     public void setServiceResort(ServiceResort serviceResort) {
         this.serviceResort = serviceResort;
+    }
+
+    public List<ContractDetail> getContractDetails() {
+        return contractDetails;
+    }
+
+    public void setContractDetails(List<ContractDetail> contractDetails) {
+        this.contractDetails = contractDetails;
+    }
+
+    public Contract(Integer id, String startDate, String endDate, Double deposit, Double totalMoney, Customer customer, Employee employee, ServiceResort serviceResort, List<ContractDetail> contractDetails) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.totalMoney = totalMoney;
+        this.customer = customer;
+        this.employee = employee;
+        this.serviceResort = serviceResort;
+        this.contractDetails = contractDetails;
     }
 }

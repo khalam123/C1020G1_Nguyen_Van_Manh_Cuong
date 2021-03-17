@@ -3,13 +3,15 @@ package case_study.model.contract;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contractDetailId;
-    private int quantity;
+    @Min(1)
+    private Integer quantity;
 
     @ManyToOne
     @JoinColumn(name = "contract_id", referencedColumnName = "id")
@@ -24,7 +26,7 @@ public class ContractDetail {
     public ContractDetail() {
     }
 
-    public ContractDetail(Integer contractDetailId, int quantity, Contract contract, AttachService attachService) {
+    public ContractDetail(Integer contractDetailId, @Min(1) Integer quantity, Contract contract, AttachService attachService) {
         this.contractDetailId = contractDetailId;
         this.quantity = quantity;
         this.contract = contract;

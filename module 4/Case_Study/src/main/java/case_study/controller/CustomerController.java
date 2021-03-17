@@ -8,10 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 public class CustomerController {
@@ -44,11 +47,17 @@ public class CustomerController {
     }
 
     @PostMapping("/create_customer")
-    public String createCustomer(Model model, Customer customer){
-        customerService.save(customer);
-        model.addAttribute("customers", customer);
-        model.addAttribute("message","New customer created");
-        return "redirect:/customer";
+    public String createCustomer(@Valid Customer customer, BindingResult bindingResult, Model model,){
+
+        if (bindingResult.hasFieldErrors()){
+            return "create_customer";
+        }else{
+            customerService.save(customer);
+            model.addAttribute("customers", customer);
+            model.addAttribute("message","New customer created");
+            return "redirect:/customer";
+        }
+
     }
 
     @GetMapping("/edit_customer/{id}")
@@ -60,11 +69,16 @@ public class CustomerController {
     }
 
     @PostMapping("/edit_customer")
-    public String updateCustomer(Customer customer, Model model){
-        customerService.save(customer);
-        model.addAttribute("customers",customer);
-        model.addAttribute("message","Customer was updated");
-        return "redirect:/customer";
+    public String updateCustomer(@Valid Customer customer,BindingResult bindingResult, Model model){
+        if (bindingResult.hasFieldErrors()){
+            return "edit_customer";
+        }else{
+            customerService.save(customer);
+            model.addAttribute("customers",customer);
+            model.addAttribute("message","Customer was updated");
+            return "redirect:/customer";
+        }
+
     }
 
     @PostMapping("/delete_customer")

@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{common/layout::header}">
     <meta charset="UTF-8">
-    <title>Contrat</title>
+    <title>Contract</title>
 </head>
 <body>
+<div th:replace="common/layout::navbar"></div>
+<form th:action="@{/create_contract}" th:object="${contract}" method="post">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <br><br>
+                        <button class="btn btn-warning" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><a th:href="@{/contract}">Back to list contract</a> </button>
+<!--                        <br>-->
+<!--                        <button class="btn btn-warning" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true"><a th:href="@{/create_house}">Create House</a></button>-->
+<!--                        <br>-->
+<!--                        <button class="btn btn-warning" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="true"><a th:href="@{/create_room}">Create Room</a></button>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9" style="border-left: black solid">
+                <h2>Create Contract</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label> Start Date</label>
+                        <input class="form-control" type="date" th:field="*{startDate}">
+                    </div>
+                    <div class="col-md-6">
+                        <label>End Date</label>
+                        <input class="form-control" type="date"  th:field="*{endDate}">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Total Money</label>
+                        <input class="form-control" type="text" placeholder="Price"
+                               th:field="*{totalMoney}">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Deposit</label>
+                        <input class="form-control" type="text" placeholder="Deposit"
+                               th:field="*{deposit}">
+                    </div>
 
+                    <div class="col-md-6">
+                        <label><b>Employee</b></label>
+                        <select class="form-control" th:field="*{employee}">
+                            <option th:each="employee:${employees}" th:value="${employee.id}"
+                                    th:text="${employee.name}"></option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label><b>Customer</b></label>
+                        <select class="form-control" th:field="*{customer}">
+                            <option th:each="customer:${customers}" th:value="${customer.id}"
+                                    th:text="${customer.name}"></option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <br><br>
+                        <input type="submit" class="btn btn-warning" value="Create Contract">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+
+
+
+<footer th:replace="~{common/layout::footer}"></footer>
 </body>
 </html>

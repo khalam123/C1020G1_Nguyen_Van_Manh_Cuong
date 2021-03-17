@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Employee {
@@ -14,7 +16,9 @@ public class Employee {
     private String name;
     private String birthday;
     private String id_card;
+    @Min(1)
     private String salary;
+    @Pattern(regexp = "/^(0+|(\\+84))[0-9]{9}$/")
     private String phone;
     @Email
     private String email;
@@ -38,8 +42,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer id, String name, String birthday, String id_card, String salary, String phone,
-                    @Email String email, String address, Position position, Division division, EducationDegree educationDegree) {
+    public Employee(Integer id, String name, String birthday, String id_card, @Min(1) String salary, @Pattern(regexp = "/^(0+|(\\+84))[0-9]{9}$/") String phone, @Email String email, String address, Position position, Division division, EducationDegree educationDegree) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;

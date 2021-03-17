@@ -11,92 +11,101 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2">
-            <ul style="list-style-type: none">
-
-                <li><a th:href="@{/create_customer}">Create Customer</a></li>
-                <li><a th:href="@{/customer}">Back to List Customer</a></li>
-            </ul>
+        <div class="col-lg-4">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
+                     aria-orientation="vertical">
+                    <br><br>
+                    <button class="btn btn-warning" id="v-pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                            aria-selected="true"><a th:href="@{/create_customer}">Create Customer</a></button>
+                    <br>
+                    <button class="btn btn-warning" id="v-pills-profile-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-profile" type="button" role="tab"
+                            aria-controls="v-pills-profile" aria-selected="true"><a th:href="@{/customer}">Back to
+                        List Customer</a></button>
+                    <br>
+                    <!--                    <button class="btn btn-warning" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="true"><a th:href="@{/create_room}">Create Room</a></button>-->
+                </div>
+            </div>
         </div>
-        <div class="col-sm-10" style="border-left: black solid">
+        <div class="col-sm-8" style="border-left: black solid">
             <h3 style="text-align: center">Update Customer</h3>
             <form th:action="@{/edit_customer}" th:object="${customers}" method="post">
-                <fieldset style="background: lightgray">
-                    <input th:type="hidden" name="id" th:field="*{id}">
-                    <div class="form-row">
-                        <div class="form-group col-md-3"></div>
-                        <div class="form-group col-md-3">
-                            <label>Name</label>
-                            <input type="text" class="form-control" placeholder="Name" th:field="*{name}">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>Birthday</label>
-                            <input type="date" class="form-control" placeholder="Birthday" th:field="*{birthday}">
-                        </div>
-                        <div class="form-group col-md-3"></div>
+                <input th:type="hidden" name="id" th:field="*{id}">
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-3">
+                        <label><b>Name</b></label>
+                        <input type="text" class="form-control" placeholder="Name" th:field="*{name}">
                     </div>
+                    <div class="form-group col-md-3">
+                        <label><b>Birthday</b></label>
+                        <input type="date" class="form-control" placeholder="Birthday" th:field="*{birthday}">
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-3"></div>
-                        <div class="form-group col-md-3">
-                            <label>Gender</label><br>
-                            <input type="radio" id="male" name="gender" th:value="Male" th:field="*{gender}">
-                            <label for="male">Male</label><br>
-                            <input type="radio" id="female" name="gender" th:value="Female" th:field="*{gender}">
-                            <label for="female">Female</label><br>
-                            <input type="radio" id="other" name="gender" th:value="Other" th:field="*{gender}">
-                            <label for="other">Other</label>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>Customer Type</label>
-                            <select class="form-control" th:field="*{customerType}">
-                                <option th:each="customerType :${customerType}"
-                                        th:value="${customerType.customerType_id}"
-                                        th:text="${customerType.customerType_name}"></option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-3"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-3">
+                        <label><b>Gender</b></label><br>
+                        <input type="radio" id="male" name="gender" th:value="Male" th:field="*{gender}">
+                        <label for="male">Male</label><br>
+                        <input type="radio" id="female" name="gender" th:value="Female" th:field="*{gender}">
+                        <label for="female">Female</label><br>
+                        <input type="radio" id="other" name="gender" th:value="Other" th:field="*{gender}">
+                        <label for="other">Other</label>
                     </div>
+                    <div class="form-group col-md-3">
+                        <label><b>Customer Type</b></label>
+                        <select class="form-control" th:field="*{customerType}">
+                            <option th:each="customerType :${customerType}"
+                                    th:value="${customerType.customerType_id}"
+                                    th:text="${customerType.customerType_name}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-3"></div>
-                        <div class="form-group col-md-3">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" placeholder="Phone number" th:field="*{phone}">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>ID-Card</label>
-                            <input type="text" class="form-control" placeholder="ID-Card" th:field="*{id_card}">
-                        </div>
-                        <div class="form-group col-md-3"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-3">
+                        <label><b>Phone</b></label>
+                        <input type="text" class="form-control" placeholder="Phone number" th:field="*{phone}">
                     </div>
+                    <div class="form-group col-md-3">
+                        <label><b>ID-Card</b></label>
+                        <input type="text" class="form-control" placeholder="ID-Card" th:field="*{id_card}">
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-3"></div>
-                        <div class="form-group col-md-6">
-                            <label>E-mail</label>
-                            <input type="text" class="form-control" placeholder="E-mail" th:field="*{email}">
-                        </div>
-                        <div class="form-group col-md-3"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-6">
+                        <label><b>E-mail</b></label>
+                        <input type="text" class="form-control" placeholder="E-mail" th:field="*{email}">
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3"></div>
-                        <div class="form-group col-md-6">
-                            <label>Address</label>
-                            <input type="text" class="form-control" placeholder="Address" th:field="*{address}">
-                        </div>
-                        <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-3"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-6">
+                        <label><b>Address</b></label>
+                        <input type="text" class="form-control" placeholder="Address" th:field="*{address}">
                     </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <input class="btn btn-primary" type="submit" value="Update">
-                            <a class="btn btn-secondary" th:href="@{/view_customer/__${id}__ }" role="button">Back</a>
-                        </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
                     </div>
-                </fieldset>
+                    <div class="form-group col-md-6">
+                        <input class="btn btn-primary" type="submit" value="Update">
+                        <a class="btn btn-secondary" th:href="@{/view_customer/__${id}__ }" role="button">Back</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

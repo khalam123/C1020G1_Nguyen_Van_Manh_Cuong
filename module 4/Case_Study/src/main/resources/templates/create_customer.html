@@ -11,11 +11,22 @@
 <div th:replace="~{common/layout::navbar}"></div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2">
-            <a th:href="@{/customer}">Back to List Customer</a>
+        <div class="col-lg-2">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <br><br>
+                    <button class="btn btn-warning" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><a th:href="@{/customer}">Back to List Customer</a></button>
+                    <br>
+                    <!--                    <button class="btn btn-warning" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true"><a th:href="@{/create_house}">Create House</a></button>-->
+                    <!--                    <br>-->
+                    <!--                    <button class="btn btn-warning" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="true"><a th:href="@{/create_room}">Create Room</a></button>-->
+                </div>
+            </div>
         </div>
+
         <div class="col-sm-10" style="border-left: black solid">
             <h3 style="text-align: center">Create Customer</h3>
+
             <form th:action="@{/create_customer}" th:object="${customers}" method="post" style="text-align: center">
                 <table>
 

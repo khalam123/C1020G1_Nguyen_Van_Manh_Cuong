@@ -12,10 +12,22 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2">
-            <a th:href="@{/employee_create}">Create new Employee</a>
-        </div>
+<!--        <div class="col-sm-2">-->
+<!--            <a th:href="@{/employee_create}">Create new Employee</a>-->
+<!--        </div>-->
 
+        <div class="col-lg-2">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <br><br>
+                    <button class="btn btn-warning" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><a th:href="@{/employee_create}">Create new Employee</a></button>
+                    <br>
+<!--                    <button class="btn btn-warning" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true"><a th:href="@{/create_contract_detail}">Create new Contract Detail</a></button>-->
+<!--                    <br>-->
+                    <!--                    <button class="btn btn-warning" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="true"><a th:href="@{/create_room}">Create Room</a></button>-->
+                </div>
+            </div>
+        </div>
 
         <div class="col-sm-10" style="border-left: black solid">
             <h2 style="text-align: center">Employee</h2>
@@ -39,12 +51,30 @@
                 </tr>
             </table>
 
-            <div>
-                <a th:href="@{'/employee'(page=${employees.number - 1})}"
-                   th:if="${employees.hasPrevious()}">Previous</a>
-                <span th:text="${employees.number + 1}"></span>/<span th:text="${employees.totalPages}"></span>
-                <a th:href="@{'/employee'(page=${employees.number + 1})}" th:if="${employees.hasNext()}">Next</a>
-            </div>
+<!--            <div>-->
+<!--                <a th:href="@{'/employee'(page=${employees.number - 1})}"-->
+<!--                   th:if="${employees.hasPrevious()}">Previous</a>-->
+<!--                <span th:text="${employees.number + 1}"></span>/<span th:text="${employees.totalPages}"></span>-->
+<!--                <a th:href="@{'/employee'(page=${employees.number + 1})}" th:if="${employees.hasNext()}">Next</a>-->
+<!--            </div>-->
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" th:class="${employees.hasPrevious()}? 'page-item':'page-item disabled'">
+                        <a class="page-link" th:href="@{'/customer'(page=${employees.number - 1})}"   th:if="${employees.hasPrevious()}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" th:href="@{'/employee'(page=${employees.number})}" th:text="${employees.number+1}"></a></li>
+                    <li class="page-item"><a class="page-link" th:href="@{'/employee'(page=${employees.number +1})}" th:text="${employees.number + 2}" th:if="${employees.hasNext()}"></a></li>
+                    <li class="page-item" th:class="${employees.hasNext()}? 'page-item':'page-item disabled'">
+                        <a class="page-link" th:href="@{'/employee'(page=${employees.number + 1})}" th:if="${employees.hasNext()}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
     </div>
 </div>

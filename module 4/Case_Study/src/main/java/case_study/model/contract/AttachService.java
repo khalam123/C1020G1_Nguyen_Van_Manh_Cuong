@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 @Entity
 public class AttachService {
@@ -11,15 +12,16 @@ public class AttachService {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private double cost;
-    private int unit;
+    @Min(1)
+    private Double cost;
+    @Min(1)
+    private Integer unit;
     private String status;
 
     public AttachService() {
     }
 
-    public AttachService(Integer id, String name, double cost, int unit, String status) {
-
+    public AttachService(Integer id, String name, @Min(1) Double cost, @Min(1) Integer unit, String status) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -43,19 +45,19 @@ public class AttachService {
         this.name = name;
     }
 
-    public double getCost() {
+    public Double getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 
-    public int getUnit() {
+    public Integer getUnit() {
         return unit;
     }
 
-    public void setUnit(int unit) {
+    public void setUnit(Integer unit) {
         this.unit = unit;
     }
 

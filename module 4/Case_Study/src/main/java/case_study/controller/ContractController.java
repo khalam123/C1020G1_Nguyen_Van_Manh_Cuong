@@ -23,7 +23,7 @@ public class ContractController {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/list_contract")
+    @GetMapping("/contract")
     public String listContract(@PageableDefault(size = 3) Pageable pageable, Model model){
         model.addAttribute("contract",contractService.findAllByContract(LocalDate.now().toString(),pageable));
         return "list_contract";
@@ -41,9 +41,7 @@ public class ContractController {
     public String createContract(Contract contract, Model model){
         contractService.save(contract);
         model.addAttribute("contract",new Contract());
-        return "redirect:/list_contract";
+        return "redirect:/contract";
     }
-
-
 
 }

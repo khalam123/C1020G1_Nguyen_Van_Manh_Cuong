@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Customer {
@@ -14,6 +15,7 @@ public class Customer {
     private String birthday;
     private String gender;
     private String id_card;
+    @Pattern(regexp = "/^(0+|(\\+84))[0-9]{9}$/")
     private String phone;
     @Email
     private String email;
