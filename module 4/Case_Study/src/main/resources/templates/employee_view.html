@@ -1,10 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common/layout::header}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Employee View</title>
+    <!--    <link rel="stylesheet" th:href="@{../static/css/bootstrap.min.css}">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
+<div th:replace="~{common/layout::navbar}"></div>
 
+
+<div class="row">
+    <div class="col-4">
+        <ul style="list-style-type: none">
+            <li><a th:href="@{/employee_create}">Create Employee</a></li>
+            <li><a th:href="@{/employee}">Back to List Employee</a></li>
+        </ul>
+    </div>
+    <div class="col-8" style="border-left: black solid">
+        <h3 style="text-align: center">Employee Detail</h3>
+        <table class="table">
+            <tr>
+                <th>ID:</th>
+                <td th:text="${employees.id}"></td>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <td th:text="${employees.name}"></td>
+            </tr>
+            <tr>
+                <th>Birthday:</th>
+                <td th:text="${employees.birthday}"></td>
+            </tr>
+            <tr>
+                <th>Salary:</th>
+                <td th:text="${employees.salary}"></td>
+            </tr>
+            <tr>
+                <th>ID_Card:</th>
+                <td th:text="${employees.id_card}"></td>
+            </tr>
+            <tr>
+                <th>Phone:</th>
+                <td th:text="${employees.phone}"></td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td th:text="${employees.email}"></td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td th:text="${employees.address}"></td>
+            </tr>
+            <tr>
+                <th>Position:</th>
+                <td th:text="${employees.position.name}"></td>
+            </tr>
+            <tr>
+                <th>Education Degree:</th>
+                <td th:text="${employees.educationDegree.name}"></td>
+            </tr>
+            <tr>
+                <th>Division:</th>
+                <td th:text="${employees.division.name}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div style="text-align: center">
+            <a class="btn btn-warning btn-lg" th:href="@{/employee_edit/__${employees.id}__ }" role="button">Edit</a>
+            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModal">Delete</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure DELETE this ??????
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="submitForm()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form th:action="@{/delete_customer}" th:object="${employees}" method="post" id="formDelete">
+    <input type="hidden" id="input" name="delete_modal" th:value="${employees.id}">
+</form>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+<script>
+    function setValue(id) {
+        document.getElementById("input").value = id;
+    }
+
+    function submitForm() {
+        document.getElementById("formDelete").submit();
+    }
+</script>
+
+<footer th:replace="~{common/layout::footer}"></footer>
 </body>
 </html>

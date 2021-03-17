@@ -10,4 +10,5 @@ public interface ServiceResortService  {
     Page<ServiceResort> findAll(Pageable pageable);
     List<ServiceResort> findAll();
     ServiceResort findById(Integer id);
+    void save(ServiceResort serviceResort);
 }

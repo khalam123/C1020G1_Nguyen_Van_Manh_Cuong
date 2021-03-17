@@ -28,4 +28,9 @@ public class ServiceResortServiceImpl implements ServiceResortService {
     public ServiceResort findById(Integer id) {
         return serviceResortRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void save(ServiceResort serviceResort) {
+        serviceResortRepository.save(serviceResort);
+    }
 }
