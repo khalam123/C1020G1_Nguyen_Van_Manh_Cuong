@@ -17,7 +17,7 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public Page<Contract> findAllByContract(String str, Pageable pageable) {
-        return contractRepository.findAllByContractStartDateBeforeAndContractEndDateAfter(str,str,pageable);
+        return contractRepository.findAllByStartDateBeforeAndEndDateAfter(str,str,pageable);
     }
 
     @Override
