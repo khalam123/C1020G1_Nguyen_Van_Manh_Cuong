@@ -29,8 +29,15 @@
 
 
         <div class="col-sm-10" style="border-left: black solid">
-            <h2 style="text-align: center">Customer</h2>
-            <table class="table">
+            <h2 style="text-align: center">Customer Contract</h2>
+            <form th:action="@{/contract_search}" class="form-inline my-2 my-lg-0 " method="get">
+                <div style="margin-right: 60px" >
+                    <input name="keyword" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" >Search</button>
+                </div>
+            </form>
+            <br>
+            <table class="table table-striped">
                 <tr class="table-warning">
                     <th>Start Date</th>
                     <th>End Date</th>
@@ -38,7 +45,7 @@
                     <th>Employee</th>
                     <th>Attach Service</th>
                 </tr>
-                <tr th:each="c: ${contract}" class="table-secondary">
+                <tr th:each="c: ${contract}">
                     <td th:text="${c.startDate}"></td>
                     <td th:text="${c.endDate}"></td>
                     <td th:text="${c.customer.name}"></td>

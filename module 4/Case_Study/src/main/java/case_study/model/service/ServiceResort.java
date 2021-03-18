@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
@@ -11,19 +12,21 @@ public class ServiceResort {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer service_id;
+    @Pattern(regexp = "(DV\\-+)[0-9]{4}", message = "Service code follow format DV-xxxx")
+    private String service_code;
     private String service_name;
-    @Min(1)
+    @Min(value = 1, message = "Area must be > 0")
     private Integer service_area;
-    @Min(1)
+    @Min(value = 1, message = "Cost must be > 0")
     private Double service_cost;
-    @Min(0)
+    @Min(value = 0, message = "People must be >= 0")
     private Integer service_max_people;
 
     private String standard_room;
     private String description;
-    @Min(1)
+    @Min(value = 1, message = "Pool area must be > 0")
     private Double pool_area;
-    @Min(1)
+    @Min(value = 1, message = "Floor must be > 0")
     private Integer floor;
 
     @ManyToOne
@@ -34,8 +37,9 @@ public class ServiceResort {
     public ServiceResort() {
     }
 
-    public ServiceResort(Integer service_id, String service_name, @Min(1) Integer service_area, @Min(1) Double service_cost, @Min(0) Integer service_max_people, String standard_room, String description, @Min(1) Double pool_area, @Min(1) Integer floor, RentType rentType) {
+    public ServiceResort(Integer service_id, @Pattern(regexp = "(DV\\-+)[0-9]{4}", message = "Service code follow format DV-xxxx") String service_code, String service_name, @Min(value = 1, message = "Area must be > 0") Integer service_area, @Min(value = 1, message = "Cost must be > 0") Double service_cost, @Min(value = 0, message = "People must be >= 0") Integer service_max_people, String standard_room, String description, @Min(value = 1, message = "Pool area must be > 0") Double pool_area, @Min(value = 1, message = "Floor must be > 0") Integer floor, RentType rentType) {
         this.service_id = service_id;
+        this.service_code = service_code;
         this.service_name = service_name;
         this.service_area = service_area;
         this.service_cost = service_cost;
@@ -123,7 +127,16 @@ public class ServiceResort {
         return rentType;
     }
 
+
     public void setRentType(RentType rentType) {
         this.rentType = rentType;
+    }
+
+    public String getService_code() {
+        return service_code;
+    }
+
+    public void setService_code(String service_code) {
+        this.service_code = service_code;
     }
 }

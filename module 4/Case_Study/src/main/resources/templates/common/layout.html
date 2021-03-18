@@ -52,7 +52,7 @@
         RESORT</p>
     <h4 style="margin-left: 210px;margin-right: 30px ;color: mediumseagreen;font-family: 'Agency FB'">Mạnh Cường</h4>
 </nav>
-<nav class="navbar navbar-expand-lg " style="background-color: black">
+<nav class="navbar navbar-expand-lg " style="background-color: dimgray">
     <a class="navbar-brand" href="/" style="margin-left: 120px"><span class="material-icons"
                                                                       style="width: 25px">home</span>Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -77,14 +77,13 @@
                     library_books</span>Contract</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" style="margin-right: 60px" action="">
-            <input class="form-control mr-sm-2" id="search" th:value="${search}" type="text" placeholder="Search"
-                   aria-label="Search"
-                   style="border-radius: 20px; width: 240px">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="action" value="search">
-                Search
-            </button>
-        </form>
+        <div class=" my-2 my-lg-0" style="margin-right: 60px" action="">
+            <b><span th:utext="${#request.userPrincipal.name}" th:if="${#request.userPrincipal!=null}"
+                  style="color: white"></span></b>
+            <a class="btn btn-warning my-2 my-sm-0" type="submit" name="action" value="Log out" th:if="${#request.userPrincipal!=null}" th:href="@{/logout}" role="button">
+                Log out
+            </a>
+        </div>
     </div>
 </nav>
 </body>

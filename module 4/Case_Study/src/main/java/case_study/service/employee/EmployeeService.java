@@ -12,4 +12,6 @@ public interface EmployeeService {
     Employee findById(Integer id);
     void save(Employee employee);
     void remove(Integer id);
+
+    Page<Employee> findAllInputText(String keyword,Pageable pageable);
 }

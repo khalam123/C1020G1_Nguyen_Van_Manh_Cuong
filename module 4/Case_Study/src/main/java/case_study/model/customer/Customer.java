@@ -1,6 +1,7 @@
 package case_study.model.customer;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,13 +12,20 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Pattern(regexp = "(KH\\-+)[0-9]{4}",message = "Customer Code follow format KH-xxxx")
+    private String customerCode;
     private String name;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private String birthday;
     private String gender;
+
+    @Pattern(regexp = "[0-9]{9}", message = "Try again follow format XXXXXXXXX")
     private String id_card;
-    @Pattern(regexp = "/^(0+|(\\+84))[0-9]{9}$/")
+
+    @Pattern(regexp = "^(090+|091+|(\\(\\+84\\)(90))+|(\\(\\+84\\)(91))+)[0-9]{7}$", message = "Follow format (+84)90xxxxxxx or 090xxxxxxx")
     private String phone;
-    @Email
+
+    @Email(message = "Try again follow format abc@abc.com")
     private String email;
     private String address;
 
@@ -27,13 +35,12 @@ public class Customer {
     private CustomerType customerType;
 
 
-
     public Customer() {
     }
 
-    public Customer(Integer id, String name, String birthday, String gender, String id_card, String phone,
-                    @Email String email, String address, CustomerType customerType) {
+    public Customer(Integer id, @Pattern(regexp = "(KH\\-+)[0-9]{4}", message = "Customer Code follow format KH-xxxx") String customerCode, String name, String birthday, String gender, @Pattern(regexp = "[0-9]{9}", message = "Try again follow format XXXXXXXXX") String id_card, @Pattern(regexp = "^(090+|091+|(\\(\\+84\\)(90))+|(\\(\\+84\\)(91))+)[0-9]{7}$", message = "Follow format (+84)90xxxxxxx or 090xxxxxxx") String phone, @Email(message = "Try again follow format abc@abc.com") String email, String address, CustomerType customerType) {
         this.id = id;
+        this.customerCode = customerCode;
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -50,6 +57,14 @@ public class Customer {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCustomerCode() {
+        return customerCode;
+    }
+
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode;
     }
 
     public String getName() {

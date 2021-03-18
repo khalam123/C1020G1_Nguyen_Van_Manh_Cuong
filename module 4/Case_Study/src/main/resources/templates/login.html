@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/login.css" rel="stylesheet" type="text/css"/>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        header{
+
+            min-height: 0px;
+            padding: 0px;
+        }
+        main{
+            background-image: url("/img/wellness-retreat-1680x760.jpg");
+            background-position: unset;
+            /*background-repeat: no-repeat;*/
+            /*background-size: cover;*/
+            padding: 320px;
+        }
+        footer{
+
+            min-height: 0px;
+            padding: 0px;
+        }
+        .container{
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .login-form{
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 15px;
+            border: 2px dotted #cccccc;
+            border-radius: 10px;
+        }
+        h1{
+            color: #009999;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .input-box{
+            margin-bottom: 10px;
+        }
+        .input-box input{
+            padding: 7.5px 15px;
+            width: 100%;
+            border: 1px solid #cccccc;
+            outline: none;
+        }
+        .btn-box{
+            text-align: right;
+            margin-top: 30px;
+        }
+        .btn-box button{
+            padding: 7.5px 15px;
+            border-radius: 2px;
+            background-color: #009999;
+            color: #ffffff;
+            border: none;
+            outline: none;
+        }
+        .material-icons {
+            font-size: 25px;
+            width: 25px;
+        }
+        <img src="../static/img/wellness-retreat-1680x760.jpg"/></style>
+</head>
+<body>
+<header>
+    <div class="container">
+
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="login-form">
+            <form action="j_spring_security_check" method="post">
+                <h1 style="text-align: center">Login Resort</h1>
+                <div class="input-box">
+                    <i ></i>
+                    <input type="text" placeholder="Nhập username" name="username">
+                </div>
+                <div class="input-box">
+                    <i ></i>
+                    <input type="password" placeholder="Nhập mật khẩu" name="password">
+                </div>
+                <div class="btn-box">
+                    <button type="submit">
+                        Đăng nhập
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer style="
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 0rem;">
+    <p style="margin: 0 ;text-align: center ;color: white; background-color: #202020">
+        --------------------- &copy CodeGym Đà Nẵng --------------------- <span
+            style="width: 18px;font-size: 15px"
+            class="material-icons"></span><span></span></p>
+</footer>
+</body>
+</html>

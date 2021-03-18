@@ -38,4 +38,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void remove(Integer id) {
         employeeRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Employee> findAllInputText(String keyword, Pageable pageable) {
+        return employeeRepository.findAllInputText(keyword, pageable);
+    }
 }

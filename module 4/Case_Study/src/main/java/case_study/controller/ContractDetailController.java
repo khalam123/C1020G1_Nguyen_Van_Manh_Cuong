@@ -7,8 +7,11 @@ import case_study.service.contract.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class ContractDetailController {
@@ -28,10 +31,13 @@ public class ContractDetailController {
     }
 
     @PostMapping("/create_contract_detail")
-    public String createContractDetail(ContractDetail contractDetail, Model model){
-        contractDetailService.save(contractDetail);
-        model.addAttribute("contractDetail",new ContractDetail());
-        return "redirect:/list_contract";
+    public String createContractDetail(@Valid ContractDetail contractDetail, BindingResult bindingResult, Model model){
+        if (bindingResult.hasFieldErrors()){
+            return "create_contract_detail";
+        }else {
+            contractDetailService.save(contractDetail);
+            model.addAttribute("contractDetail", new ContractDetail());
+            return "redirect:/contract";
+        }
     }
-
 }

@@ -34,4 +34,9 @@ public class ContractServiceImpl implements ContractService {
     public void save(Contract contract) {
         contractRepository.save(contract);
     }
+
+    @Override
+    public Page<Contract> findAllInputText(String keyword, Pageable pageable) {
+        return contractRepository.findAllInputText(keyword, pageable);
+    }
 }

@@ -11,4 +11,5 @@ public interface ContractService {
     List<Contract> findAll();
     Contract findById(Integer id);
     void save(Contract contract);
+    Page<Contract> findAllInputText(String keyword,Pageable pageable);
 }

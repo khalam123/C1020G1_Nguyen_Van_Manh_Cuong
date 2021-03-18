@@ -6,7 +6,7 @@
 </head>
 <body>
 <div th:replace="common/layout::navbar"></div>
-<form th:action="@{/create_villa}" th:object="${serviceResorts}" method="post">
+<form th:action="@{/create_villa}" th:object="${serviceResort}" method="post">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
@@ -25,6 +25,12 @@
                 <h2>Create villa</h2>
                 <div class="row">
                     <div class="col-md-6">
+                        <label> Service Code</label>
+                        <input class="form-control" type="text" placeholder="Service Code"
+                               th:field="*{service_code}">
+                        <p th:if="${#fields.hasErrors('service_code')}" th:errors="*{service_code}" style="color: red">Service_Code Error</p>
+                    </div>
+                    <div class="col-md-6">
                         <label> Name</label>
                         <input class="form-control" type="text" placeholder="Service Name"
                                th:field="*{service_name}">
@@ -32,16 +38,19 @@
                     <div class="col-md-6">
                         <label>Area</label>
                         <input class="form-control" type="text" placeholder="Area" th:field="*{service_area}">
+                        <p th:if="${#fields.hasErrors('service_area')}" th:errors="*{service_area}" style="color: red">Service_Area Error</p>
                     </div>
                     <div class="col-md-6">
                         <label>Cost</label>
                         <input class="form-control" type="text" placeholder="Cost"
                                th:field="*{service_cost}">
+                        <p th:if="${#fields.hasErrors('service_cost')}" th:errors="*{service_cost}" style="color: red">service_cost Error</p>
                     </div>
                     <div class="col-md-6">
                         <label>People</label>
                         <input class="form-control" type="text" placeholder="People"
                                th:field="*{service_max_people}">
+                        <p th:if="${#fields.hasErrors('service_max_people')}" th:errors="*{service_max_people}" style="color: red">service_max_people Error</p>
                     </div>
 
                     <div class="col-md-6">
@@ -65,11 +74,13 @@
                         <label>Pool</label>
                         <input class="form-control" type="text" placeholder="Pool area"
                                th:field="*{pool_area}">
+                        <p th:if="${#fields.hasErrors('pool_area')}" th:errors="*{pool_area}" style="color: red">Pool_area Error</p>
                     </div>
                     <div class="col-md-6">
                         <label>Floor:</label>
                         <input class="form-control" type="text" placeholder="Number of floor"
                                th:field="*{floor}">
+                        <p th:if="${#fields.hasErrors('floor')}" th:errors="*{floor}" style="color: red">Floor Error</p>
                     </div>
                     <div class="col-md-6">
                         <br><br>

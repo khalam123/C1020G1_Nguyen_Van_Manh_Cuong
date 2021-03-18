@@ -3,6 +3,7 @@ package case_study.model.service;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,8 @@ public class RentType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private double cost;
+    @Min( value = 1, message = "Cost must be >0")
+    private Double cost;
 
     @OneToMany(mappedBy = "rentType",cascade = CascadeType.ALL)
     @JsonBackReference
@@ -21,7 +23,7 @@ public class RentType {
     public RentType() {
     }
 
-    public RentType(Integer id, String name, double cost, List<ServiceResort> serviceResorts) {
+    public RentType(Integer id, String name, @Min(value = 1, message = "Cost must be >0") Double cost, List<ServiceResort> serviceResorts) {
         this.id = id;
         this.name = name;
         this.cost = cost;
@@ -44,11 +46,11 @@ public class RentType {
         this.name = name;
     }
 
-    public double getCost() {
+    public Double getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(Double cost) {
         this.cost = cost;
     }
 

@@ -12,4 +12,5 @@ public interface CustomerService {
     Customer findById(Integer id);
     void save(Customer customer);
     void remove(Integer id);
+    Page<Customer> findAllInputText(String keyword, Pageable pageable);
 }

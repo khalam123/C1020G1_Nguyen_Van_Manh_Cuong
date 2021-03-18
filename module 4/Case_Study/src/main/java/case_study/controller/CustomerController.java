@@ -4,6 +4,7 @@ import case_study.model.customer.Customer;
 import case_study.service.customer.CustomerService;
 import case_study.service.customer.CustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class CustomerController {
@@ -41,19 +43,20 @@ public class CustomerController {
     @GetMapping("/create_customer")
     public String showCreateCustomer(Model model){
         Customer customer = new Customer();
-        model.addAttribute("customers", customer);
+        model.addAttribute("customer", customer);
         model.addAttribute("customerType",customerTypeService.findAll());
         return "create_customer";
     }
 
     @PostMapping("/create_customer")
-    public String createCustomer(@Valid Customer customer, BindingResult bindingResult, Model model,){
+    public String createCustomer(@Valid Customer customer, BindingResult bindingResult, Model model){
 
         if (bindingResult.hasFieldErrors()){
+            model.addAttribute("customerType",customerTypeService.findAll());
             return "create_customer";
         }else{
             customerService.save(customer);
-            model.addAttribute("customers", customer);
+            model.addAttribute("customers", customerService.findAll());
             model.addAttribute("message","New customer created");
             return "redirect:/customer";
         }
@@ -64,17 +67,18 @@ public class CustomerController {
     public String showEditCustomer(@PathVariable Integer id, Model model){
         Customer customer = customerService.findById(id);
         model.addAttribute("customerType",customerTypeService.findAll());
-        model.addAttribute("customers",customer);
+        model.addAttribute("customer",customer);
         return "edit_customer";
     }
 
     @PostMapping("/edit_customer")
     public String updateCustomer(@Valid Customer customer,BindingResult bindingResult, Model model){
         if (bindingResult.hasFieldErrors()){
+            model.addAttribute("customerType",customerTypeService.findAll());
             return "edit_customer";
         }else{
             customerService.save(customer);
-            model.addAttribute("customers",customer);
+            model.addAttribute("customers",customerService.findAll());
             model.addAttribute("message","Customer was updated");
             return "redirect:/customer";
         }
@@ -85,6 +89,18 @@ public class CustomerController {
     public String deleteCustomer(@RequestParam("delete_modal") int id){
         customerService.remove(id);
         return "redirect:/customer";
+    }
+
+    @GetMapping("/customer_search")
+    public String index(Model model, @PageableDefault (size = 5) Pageable pageable, @RequestParam("keyword") Optional<String> keyword){
+        Page<Customer> customers;
+        if (keyword.isPresent()){
+            customers = customerService.findAllInputText(keyword.get() ,pageable) ;
+        } else {
+            customers = customerService.findAll(pageable) ;
+        }
+        model.addAttribute("customers", customers);
+        return "/list_customer";
     }
 
 
