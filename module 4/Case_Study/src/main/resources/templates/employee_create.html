@@ -16,7 +16,9 @@
             <div class="d-flex align-items-start">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <br><br>
-                    <button class="btn btn-warning" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><a th:href="@{/employee}">Back to List Employee</a></button>
+                    <button class="btn btn-warning" id="v-pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
+                            aria-selected="true"><a th:href="@{/employee}">Back to List Employee</a></button>
                     <br>
                     <!--                    <button class="btn btn-warning" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true"><a th:href="@{/create_contract_detail}">Create new Contract Detail</a></button>-->
                     <!--                    <br>-->
@@ -26,80 +28,95 @@
         </div>
 
         <div class="col-sm-10" style="border-left: black solid">
+            <br>
             <h3 style="text-align: center">Create Employee</h3>
-            <form th:action="@{/employee_create}" th:object="${employee}" method="post" style="text-align: center">
-                <table>
-
-                    <tr>
-                        <td><input type="text" hidden th:field="*{id}"/></td>
-                    </tr>
-                    <tr>
-                        <th>Name:</th>
-                        <td><input type="text" required th:field="*{name}"></td>
-                    </tr>
-                    <tr>
-                        <th>Birthday:</th>
-                        <td><input type="date" th:field="*{birthday}"></td>
-                    </tr>
-                    <tr>
-                        <th>ID_Card:</th>
-                        <td><input type="text" required th:field="*{id_card}"></td>
-                        <td th:if="${#fields.hasErrors('id_card')}" th:errors="*{id_card}" style="color: red">ID-Card Error</td>
-                    </tr>
-                    <tr>
-                        <th>Salary:</th>
-                        <td><input type="text" required th:field="*{salary}"></td>
-                        <td th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}" style="color: red">Salary Error</td>
-                    </tr>
-                    <tr>
-                        <th>Phone:</th>
-                        <td><input type="text" required th:field="*{phone}"></td>
-                        <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red">Phone Error</td>
-                    </tr>
-                    <tr>
-                        <th>Email:</th>
-                        <td><input type="text" required th:field="*{email} "></td>
-                        <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red">Email Error</td>
-                    </tr>
-                    <tr>
-                        <th>Address:</th>
-                        <td><input type="text" required th:field="*{address}"></td>
-                    </tr>
-                    <tr>
-                        <th>Position:</th>
-                        <td>
+            <form th:action="@{/employee_create}" th:object="${employee}" method="post">
+                    <input type="text" hidden th:field="*{id}"/>
+                    <div class="form-row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <label><b>Name</b></label>
+                            <input class="form-control" type="text" placeholder="Name Employee" required
+                                   th:field="*{name}">
+                        </div>
+                        <div class="col-md-3">
+                            <label><b>Birthday</b></label>
+                            <input class="form-control" type="date" required
+                                   th:field="*{birthday}">
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <label><b>ID_Card</b></label>
+                            <input class="form-control" type="text" placeholder="ID_Card" required th:field="*{id_card}">
+                            <p th:if="${#fields.hasErrors('id_card')}" th:errors="*{id_card}" style="color: red">
+                                ID_Card Error</p>
+                            <br>
+                            <label><b>Phone</b></label>
+                            <input class="form-control" type="text" placeholder="Phone Number" required
+                                   th:field="*{phone}">
+                            <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red">
+                                Phone Error</p>
+                            <br>
+                            <label><b>Salary</b></label>
+                            <input class="form-control" type="text" placeholder="Salary Number" required
+                                   th:field="*{salary}">
+                            <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}" style="color: red">
+                                Salary Error</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label><b>Position</b></label>
                             <select class="form-control" th:field="*{position}">
                                 <option th:each="positions :${positionList}"
                                         th:value="${positions.id}"
                                         th:text="${positions.name}"></option>
                             </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Education Degree:</th>
-                        <td>
+                            <br>
+                            <label><b>Education Degree</b></label>
                             <select class="form-control" th:field="*{educationDegree}">
                                 <option th:each="eduction :${educationDegree}"
                                         th:value="${eduction.id}"
                                         th:text="${eduction.name}"></option>
                             </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Division:</th>
-                        <td>
+                            <br>
+                            <label><b>Division</b></label>
                             <select class="form-control" th:field="*{division}">
                                 <option th:each="divisions :${division}"
                                         th:value="${divisions.id}"
                                         th:text="${divisions.name}"></option>
                             </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input class="btn btn-outline-info" type="submit" value="Create Employee"></td>
-                    </tr>
-                </table>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3">
+                            <label><b>Email</b></label>
+                            <input class="form-control" type="text" placeholder="E-mail" required
+                                   th:field="*{email}">
+                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                               style="color: red">Email Error</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label><b>Address</b></label>
+                            <input class="form-control" type="text" placeholder="Address"
+                                   th:field="*{address}">
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <br><br>
+                            <input type="submit" class="btn btn-warning" value="Create Employee">
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
             </form>
         </div>
     </div>

@@ -13,6 +13,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Pattern(regexp = "(KH\\-+)[0-9]{4}",message = "Customer Code follow format KH-xxxx")
+    
     private String customerCode;
     private String name;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
