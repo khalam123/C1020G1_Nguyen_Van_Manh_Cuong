@@ -12,8 +12,10 @@ public class ServiceResort {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer service_id;
+
     @Pattern(regexp = "(DV\\-+)[0-9]{4}", message = "Service code follow format DV-xxxx")
     private String service_code;
+
     private String service_name;
     @Min(value = 1, message = "Area must be > 0")
     private Integer service_area;
