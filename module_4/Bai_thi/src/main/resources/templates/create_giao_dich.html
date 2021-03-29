@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Tạo mới giao dịch</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="~{common/layout::navbar}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <br><br>
+                    <button class="btn btn-warning" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><a th:href="@{/list_gd}">Quay lại danh sách giao dịch</a></button>
+                    <br>
+                    <!--                    <button class="btn btn-warning" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true"><a th:href="@{/create_house}">Create House</a></button>-->
+                    <!--                    <br>-->
+                    <!--                    <button class="btn btn-warning" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="true"><a th:href="@{/create_room}">Create Room</a></button>-->
+                </div>
+            </div>
+        </div>
+
+        <!--        <div class="col-sm-10" style="border-left: black solid">-->
+        <!--            <h3>Create Customer</h3>-->
+
+        <!--            <form th:action="@{/create_customer}" th:object="${customer}" method="post" style="text-align: center">-->
+        <!--                <table>-->
+
+        <!--                    <tr>-->
+        <!--                        <td><input type="text" hidden th:field="*{id}"/></td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>Code Customer:</th>-->
+        <!--                        <td><input type="text" required th:field="*{customerCode}"></td>-->
+        <!--                        <td th:if="${#fields.hasErrors('customerCode')}" th:errors="*{customerCode}" style="color: red">Customer Code Error</td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>Name:</th>-->
+        <!--                        <td><input type="text" required th:field="*{name}"></td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>Birthday:</th>-->
+        <!--                        <td><input type="date" th:field="*{birthday}"></td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>Gender:</th>-->
+        <!--                        <td>-->
+        <!--                            <input type="radio" id="male" name="gender" th:value="Male" th:field="*{gender}">-->
+        <!--                            <label for="male">Male</label><br>-->
+        <!--                            <input type="radio" id="female" name="gender" th:value="Female" th:field="*{gender}">-->
+        <!--                            <label for="male">Female</label><br>-->
+        <!--                            <input type="radio" id="other" name="gender" th:value="Other" th:field="*{gender}">-->
+        <!--                            <label for="male">Other</label>-->
+        <!--                        </td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>ID_Card:</th>-->
+        <!--                        <td><input type="text" required th:field="*{id_card}"></td>-->
+        <!--                        <td th:if="${#fields.hasErrors('id_card')}" th:errors="*{id_card}" style="color: red">ID_Card Error</td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>Phone:</th>-->
+        <!--                        <td><input type="text" required th:field="*{phone}"></td>-->
+        <!--                        <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red">Phone Error</td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>Email:</th>-->
+        <!--                        <td><input type="text" required th:field="*{email}"></td>-->
+        <!--                        <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red">Email Error</td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>Address:</th>-->
+        <!--                        <td><input type="text" required th:field="*{address}"></td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <th>Type:</th>-->
+        <!--                        <td>-->
+        <!--                            <select class="form-control" th:field="*{customerType}">-->
+        <!--                                <option th:each="customerTypes :${customerType}"-->
+        <!--                                        th:value="${customerTypes.customerType_id}"-->
+        <!--                                        th:text="${customerTypes.customerType_name}"></option>-->
+        <!--                            </select>-->
+        <!--                        </td>-->
+        <!--                    </tr>-->
+        <!--                    <tr>-->
+        <!--                        <td></td>-->
+
+        <!--                        <td><br><br><input class="btn btn-outline-info" type="submit" value="Create Customer"></td>-->
+        <!--                    </tr>-->
+        <!--                </table>-->
+        <!--            </form>-->
+        <!--        </div>-->
+
+        <div class="col-sm-10" style="border-left: black solid">
+            <br>
+            <h3 style="text-align: center">Tạo Mới Giao Dịch</h3>
+            <form th:action="@{/create_gd}" th:object="${giao_dich}" method="post">
+                <input th:type="hidden" name="id" th:field="*{id}">
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-6">
+                        <label><b>Mã giao dịch</b></label>
+                        <input type="text" class="form-control" placeholder="Mã giao dịch" required th:field="*{maGiaoDich}">
+                        <p th:if="${#fields.hasErrors('maGiaoDich')}" th:errors="*{maGiaoDich}" style="color: red">maGiaoDich Error</p>
+                        <br>
+                        <label><b>Tên khách hàng</b></label>
+                        <select class="form-control" th:field="*{khachHang}">
+                            <option th:each="KH :${khach_hang}"
+                                    th:value="${KH.id}"
+                                    th:text="${KH.tenKH}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-3">
+                        <label><b>Loại bất động sản</b></label><br>
+                        <input type="radio" id="dat" name="loaiDV" th:value="Đất" th:field="*{loaiDV}">
+                        <label for="dat">Đất</label><br>
+                        <input type="radio" id="nhaDat" name="loaiDV" th:value="Nhà_Đất" th:field="*{loaiDV}">
+                        <label for="nhaDat">Nhà Đất</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label><b>Ngày giao dịch</b></label>
+                        <input type="date" class="form-control" placeholder="Ngày giao dịch" th:field="*{ngayGiaoDich}">
+
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-6">
+                        <label><b>Đơn giá</b></label>
+                        <input type="text" class="form-control" placeholder="Đơn giá" required th:field="*{donGia}">
+                        <p th:if="${#fields.hasErrors('donGia')}" th:errors="*{donGia}" style="color: red">Don Gia Error</p>
+                        <br>
+                        <label><b>Diện tích</b></label>
+                        <input type="text" class="form-control" placeholder="Diện tích" required th:field="*{dienTich}">
+                        <p th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}" style="color: red">Dien Tich Error</p>
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="btn btn-warning" type="submit" value="Lưu">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<footer th:replace="~{common/layout::footer}"></footer>
+
+
+</body>
+</html>
