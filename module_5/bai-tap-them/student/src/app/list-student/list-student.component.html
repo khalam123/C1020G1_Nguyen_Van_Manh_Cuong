@@ -1,29 +1,167 @@
-<h2>Student List</h2>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<h2 style="text-align: center">Student List</h2>
+
 <div class="container-fluid">
+  <button type="button" class="btn btn-info" (click)="openWindowCreateStudent(studentNew)">Create Student</button>
+  <br><br>
   <table class="table table-striped">
     <thead>
-      <tr class="table-warning">
-        <th>ID</th>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Mark</th>
-        <th>Result</th>
-        <th>Action</th>
-      </tr>
+    <tr class="table-warning">
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Mark</th>
+      <th>Result</th>
+      <th>Action</th>
+    </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let students of student">
-        <td>{{students.id}}</td>
-        <td>{{students.name}}</td>
-        <td>{{students.age}}</td>
-        <td>{{students.mark}}</td>
-        <td *ngIf="students.mark >= 5">Pass</td>
-        <td *ngIf="students.mark < 5">Fail</td>
-        <td>
-          <input type="button" class="btn btn-warning" value="Detail">
-          <input type="button" class="btn btn-danger" value="Delete" style="margin-left: 10px">
-        </td>
-      </tr>
+    <tr *ngFor="let student of students">
+      <td>{{student.id}}</td>
+      <td>{{student.name}}</td>
+      <td>{{student.age}}</td>
+      <td>{{student.mark}}</td>
+      <td *ngIf="student.mark >= 5">Pass</td>
+      <td *ngIf="student.mark < 5">Fail</td>
+      <td>
+        <button type="button" class="btn btn-warning" (click)="idStudent(student);openWindowCustomClass(content)">
+          Detail
+        </button>
+        <button type="button" class="btn btn-danger" (click)="idStudent(student);openWindowCustomClass1(content1)"
+                style="margin-left: 10px">Delete
+        </button>
+      </td>
+    </tr>
     </tbody>
   </table>
 </div>
+<!--Modal Detail -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Student</h4>
+    <!--    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">-->
+    <!--      <span aria-hidden="true">&times;</span>-->
+    <!--    </button>-->
+  </div>
+  <div class="modal-body">
+    <app-student [student]="stu"></app-student>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+<!--Modal Detail -->
+<!--Modal Delete -->
+<ng-template #content1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Delete Student</h4>
+    <!--    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">-->
+    <!--      <span aria-hidden="true">&times;</span>-->
+    <!--    </button>-->
+  </div>
+  <div class="modal-body">
+    <p>Are you SURE delete "{{stu.name}}" ???</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="modal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-danger" (click)="delete(stu);modal.close('Close click')">Delete</button>
+  </div>
+</ng-template>
+<!--Modal Delete -->
+<!--Modal Create Student-->
+<ng-template #studentNew let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Create Student</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="createForm" (ngSubmit)="createStudent()">
+      <div class="form-group">
+        <label for="id"><b>ID</b></label>
+        <input type="text" id="id" name="id" class="form-control" formControlName="id">
+        <div
+          *ngIf="!id.valid && id.touched">
+          <div [hidden]="!id.errors.required" style="color: red">
+            ID not empty!
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name"><b>Name</b></label>
+        <input type="text" id="name" name="name" class="form-control" formControlName="name">
+        <div
+          *ngIf="!name.valid && name.touched">
+          <div [hidden]="!name.errors.required" style="color: red">
+            Name not empty!
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age"><b>Age</b></label>
+        <input type="number" id="age" name="age" class="form-control" formControlName="age">
+        <div
+          *ngIf="!age.valid && age.touched">
+          <div [hidden]="!age.errors.required" style="color: red">
+            Age not empty!
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="mark"><b>Mark</b></label>
+        <input type="number" id="mark" name="mark" class="form-control" formControlName="mark">
+        <div
+          *ngIf="!mark.valid && mark.touched">
+          <div [hidden]="!mark.errors.required" style="color: red">
+            Mark not empty!
+          </div>
+        </div>
+      </div>
+      <!--      <div class="form-group">-->
+      <!--        <br>-->
+      <!--        <button type="submit" class="btn btn-warning">Submit</button>-->
+      <!--      </div>-->
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="modal.close('Close click')">Close</button>
+    <button type="submit" class="btn btn-danger" (click)="createStudent();modal.close('Close click')"
+            [disabled]="!createForm.valid">Create</button>
+  </div>
+</ng-template>

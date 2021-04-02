@@ -1,9 +1,10 @@
-<h3>Student</h3>
-<p>Id học viên: {{student.id}}</p>
-<p>Tên học viên: {{student.name}}</p>
-<p>Tuổi học viên: {{student.age}}</p>
-<p>Điểm học viên: {{student.mark}}</p>
-<p>Hình ảnh học viên: </p><img [src]="student.image">
+<img [src]="student.image" width="400px" height="300px"><br>
+<p>ID: {{student.id}}</p>
+<p>Name: {{student.name}}</p>
+<p>Age: {{student.age}}</p>
+<p>Mark: {{student.mark}}</p>
 
 <label>Chấm điểm</label><br>
 <input type="number" [(ngModel)]="student.mark">
+
+
