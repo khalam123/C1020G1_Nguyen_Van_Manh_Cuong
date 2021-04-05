@@ -20,7 +20,7 @@ export class ListStudentComponent implements OnInit {
     id: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     age: new FormControl('', [Validators.required]),
-    mark: new FormControl('', [Validators.required])
+    mark: new FormControl('', [Validators.required] )
     // id: new FormGroup(),
   });
   get id(){
